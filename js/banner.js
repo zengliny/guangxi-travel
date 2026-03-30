@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // 搜索功能
-function doSearch() {
+function filterSearch() {
     const region = document.getElementById('regionFilter').value;
     const type = document.getElementById('typeFilter').value;
     const price = document.getElementById('priceFilter').value;
@@ -194,7 +194,7 @@ function quickSearch(keyword) {
         document.getElementById('regionFilter').value = '阳朔';
     }
     
-    doSearch();
+    filterSearch();
     
     // 滚动到结果区域
     document.querySelector('.featured-section')?.scrollIntoView({behavior: 'smooth'});
