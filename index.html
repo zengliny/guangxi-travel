@@ -168,6 +168,54 @@
         </div>
     </section>
 
+    <!-- 首页 Banner 轮播 -->
+    <section class="banner-section">
+        <div class="banner-slider" id="bannerSlider">
+            <div class="banner-slide active" style="background: linear-gradient(135deg, #0c1929 0%, #1e3a5f 50%, #0ea5e9 100%);">
+                <div class="banner-content">
+                    <span class="banner-tag">🏝️ 涠洲岛</span>
+                    <h2>中国最大火山岛</h2>
+                    <p>鳄鱼山、贝壳沙滩、滴水丹屏，看日出日落最佳目的地</p>
+                    <a href="#destinations" class="banner-btn">查看详情</a>
+                </div>
+            </div>
+            <div class="banner-slide" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #10b981 100%);">
+                <div class="banner-content">
+                    <span class="banner-tag">🌊 德天瀑布</span>
+                    <h2>亚洲第一跨国瀑布</h2>
+                    <p>与越南板约瀑布相连，气势磅礴的天然奇观</p>
+                    <a href="#destinations" class="banner-btn">查看详情</a>
+                </div>
+            </div>
+            <div class="banner-slide" style="background: linear-gradient(135deg, #1e3a5f 0%, #0ea5e9 50%, #38bdf8 100%);">
+                <div class="banner-content">
+                    <span class="banner-tag">🏖️ 北海银滩</span>
+                    <h2>天下第一滩</h2>
+                    <p>沙质细腻白滑，海水清澈见底，傍晚日落绝美</p>
+                    <a href="#destinations" class="banner-btn">查看详情</a>
+                </div>
+            </div>
+        </div>
+        <button class="banner-arrow banner-prev" onclick="changeBanner(-1)">❮</button>
+        <button class="banner-arrow banner-next" onclick="changeBanner(1)">❯</button>
+        <div class="banner-dots" id="bannerDots">
+            <span class="dot active" onclick="goToBanner(0)"></span>
+            <span class="dot" onclick="goToBanner(1)"></span>
+            <span class="dot" onclick="goToBanner(2)"></span>
+        </div>
+    </section>
+
+    <!-- 热门房源推荐 -->
+    <section class="section featured-section">
+        <div class="container">
+            <h2 class="section-title">🔥 热门推荐</h2>
+            <p class="section-subtitle">精选优质房源，点击查看详情</p>
+            <div class="featured-grid" id="featuredGrid">
+                <!-- 房源卡片将通过 JS 渲染 -->
+            </div>
+        </div>
+    </section>
+
     <!-- 动态内容板块容器 -->
     <main id="mainContent">
         <!-- 板块将通过JS动态插入 -->
@@ -237,6 +285,12 @@
     </footer>
 
     <!-- 微信二维码弹窗 -->
+    <!-- 房源详情弹窗 -->
+    <div class="property-modal" id="propertyModal">
+        <div class="property-modal-content" id="propertyModalContent">
+            <!-- 内容通过 JS 动态渲染 -->
+        </div>
+    </div>
     <div class="modal" id="wechatModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('wechatModal')">&times;</span>
@@ -261,6 +315,7 @@
     <script src="data/interactive.js"></script>
     <script src="data/seo.js"></script>
     <script src="data/performance.js"></script>
+    <script src="js/banner.js"></script>
     <script>
         // ==================== 站点配置 ====================
         const SITE_CONFIG = {

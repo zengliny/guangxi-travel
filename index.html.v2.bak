@@ -240,15 +240,15 @@
     <div class="modal" id="wechatModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('wechatModal')">&times;</span>
-            <h3>💬 微信扫码添加</h3>
-            <div class="qr-placeholder"><img src="/images/wechat-qr.jpg" alt="微信二维码">
-                <div class="qr-box">
-                    <span>📷</span>
-                    <p>微信二维码<br><small>请添加微信详询</small></p>
-                </div>
+            <h3>💬 添加微信详询</h3>
+            <div class="qr-placeholder">
+                <img src="/images/wechat-qr.jpg" alt="微信二维码">
+                <button class="qr-box" onclick="copyWechat()">
+                    <span>➕</span>
+                    <p>一键复制微信号</p>
+                </button>
             </div>
-            <p class="text-muted">微信：ai_fang365
-电话：17200861361</p>
+            <p class="text-muted">微信号：ai_fang365 | 电话：17200861361</p>
         </div>
     </div>
 
@@ -505,6 +505,15 @@
         // 弹窗
         function showWechat() {
             document.getElementById('wechatModal').style.display = 'flex';
+        }
+        
+        // 复制微信号
+        function copyWechat() {
+            navigator.clipboard.writeText('ai_fang365').then(() => {
+                alert('✅ 微信号已复制：ai_fang365\n请打开微信添加好友');
+            }).catch(() => {
+                alert('微信号：ai_fang365\n请手动复制后打开微信添加');
+            });
         }
         
         function closeModal(id) {
