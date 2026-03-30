@@ -946,3 +946,271 @@ body {
         text-align: center;
     }
 }
+
+/* ==================== 在线预约表单样式 ==================== */
+
+/* 浮动预约按钮 */
+.booking-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #00a86b 0%, #00d4aa 100%);
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(0, 168, 107, 0.4);
+    z-index: 999;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.booking-fab:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 35px rgba(0, 168, 107, 0.5);
+}
+
+.booking-fab .fab-icon {
+    font-size: 20px;
+}
+
+/* 预约模态框 */
+.booking-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.booking-modal-content {
+    background: #fff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.booking-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s;
+}
+
+.booking-modal-close:hover {
+    color: #333;
+}
+
+.booking-modal-header {
+    padding: 30px 30px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f8fffc 0%, #e8f5e9 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.booking-modal-header h2 {
+    margin: 0 0 10px;
+    color: #00a86b;
+    font-size: 24px;
+}
+
+.booking-modal-header p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* 表单样式 */
+.booking-form {
+    padding: 25px 30px 35px;
+}
+
+.booking-field {
+    margin-bottom: 20px;
+}
+
+.booking-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.booking-field input,
+.booking-field select,
+.booking-field textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.booking-field input:focus,
+.booking-field select:focus,
+.booking-field textarea:focus {
+    border-color: #00a86b;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1);
+}
+
+/* 预约类型网格 */
+.booking-type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.booking-type-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 8px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.booking-type-option:hover {
+    border-color: #00a86b;
+    background: #f8fffc;
+}
+
+.booking-type-option input {
+    display: none;
+}
+
+.booking-type-option input:checked + .type-icon + .type-label {
+    color: #00a86b;
+}
+
+.booking-type-option:has(input:checked) {
+    border-color: #00a86b;
+    background: #f8fffc;
+}
+
+.booking-type-option .type-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.booking-type-option .type-label {
+    font-size: 12px;
+    color: #666;
+}
+
+/* 提交按钮 */
+.booking-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #00a86b 0%, #00d4aa 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s;
+    margin-top: 10px;
+}
+
+.booking-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 168, 107, 0.4);
+}
+
+.booking-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* 成功状态 */
+.booking-success {
+    padding: 50px 30px;
+    text-align: center;
+}
+
+.booking-success .success-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.booking-success h3 {
+    color: #00a86b;
+    font-size: 24px;
+    margin: 0 0 15px;
+}
+
+.booking-success p {
+    color: #666;
+    font-size: 15px;
+    margin: 0 0 10px;
+}
+
+.booking-success .success-note {
+    background: #fff8e1;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .booking-fab {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .booking-type-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .booking-modal-content {
+        margin: 10px;
+    }
+    
+    .booking-form {
+        padding: 20px;
+    }
+}
