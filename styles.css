@@ -131,6 +131,32 @@ body {
     cursor: pointer;
 }
 
+/* 电话按钮 */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.phone-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}
+
 /* Hero 区 */
 .hero {
     position: relative;
@@ -651,27 +677,53 @@ body {
     }
 }
 
-/* 响应式 */
+/* 响应式 - 移动端导航优化 */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 20px;
-        gap: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    /* 导航栏压缩 */
+    .header {
+        padding: 0;
     }
     
-    .nav-links.active {
-        display: flex;
+    .nav-container {
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .header-actions {
+        gap: 8px;
+    }
+    
+    .phone-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
     
     .mobile-menu-btn {
         display: block;
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+    
+    /* 导航链接隐藏，使用移动端菜单 */
+    .nav-links {
+        display: none !important;
+    }
+    
+    /* 移动端菜单优化 - 解决遮挡问题 */
+    .mobile-menu {
+        z-index: 10002;
+        max-height: calc(100vh - 50px);
+        top: 50px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+    
+    .menu-backdrop {
+        z-index: 10001;
     }
     
     .hero-stats {
