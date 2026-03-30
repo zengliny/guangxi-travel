@@ -4591,25 +4591,8 @@ input, textarea, select {
 }
 
 /* 桌面端隐藏菜单按钮 */
-@media (min-width: 769px) {
-    .mobile-menu-btn {
-        display: none !important;
-    }
-    .mobile-menu {
-        display: none !important;
-    }
-}
 
 /* 点击链接后自动关闭菜单 */
 .mobile-menu li a[href^="#"] {
     cursor: pointer;
-}
-
-/* 强制移动端菜单显示 */
-#mobileMenu {
-    display: none !important;
-}
-
-#mobileMenu.active {
-    display: block !important;
 }
