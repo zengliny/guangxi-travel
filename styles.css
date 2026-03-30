@@ -2931,7 +2931,36 @@ h6 { font-size: var(--text-base); font-weight: 500; }
 }
 
 .qr-box {
-    display: none;
+    display: block;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.qr-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(7, 193, 96, 0.4);
+}
+
+.qr-box span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.qr-box p {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.qr-box small {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
 }
 
 /* ========================================
@@ -3240,4 +3269,112 @@ html {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* 微信弹窗优化 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+    animation: modalBounceIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes modalBounceIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    color: #999;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.modal-close:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.qr-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.qr-placeholder img {
+    width: 280px;
+    height: 280px;
+    border-radius: 20px;
+    border: 6px solid #f0f9ff;
+    box-shadow: 0 10px 40px rgba(14, 165, 233, 0.2);
+}
+
+.qr-box {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 18px 30px;
+    background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-align: center;
+}
+
+.qr-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(7, 193, 96, 0.5);
+}
+
+.qr-box span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.qr-box p {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.qr-box small {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
 }
