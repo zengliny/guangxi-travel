@@ -4365,3 +4365,79 @@ input, textarea, select {
         width: 100%;
     }
 }
+
+/* 底部 CTA */
+.cta-section {
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #14b8a6 100%);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-content h2 {
+    color: white;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.cta-content > p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 18px 45px;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cta-phone {
+    background: white;
+    color: #0ea5e9;
+}
+
+.cta-wechat {
+    background: #07c160;
+    color: white;
+}
+
+.cta-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.cta-note {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem;
+}
+
+/* 底部 CTA 手机端 */
+@media (max-width: 768px) {
+    .cta-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 80%;
+        justify-content: center;
+    }
+}
