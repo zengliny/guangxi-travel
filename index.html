@@ -505,6 +505,25 @@
             }
         ];
 
+        // ==================== 下拉菜单分组 ====================
+        const NAV_GROUPS = [
+            {
+                name: '住宿服务',
+                icon: '🏨',
+                items: ['destinations', 'homestay', 'rental']
+            },
+            {
+                name: '资产服务',
+                icon: '💰',
+                items: ['elderly', 'property', 'trust']
+            },
+            {
+                name: '特殊服务',
+                icon: '✨',
+                items: ['auction', 'exchange']
+            }
+        ];
+
         // ==================== 初始化 ====================
         document.addEventListener('DOMContentLoaded', function() {
             renderNavigation();
@@ -513,7 +532,7 @@
             setupScrollSpy();
         });
 
-        // 渲染导航
+        // 渲染导航 - 使用下拉菜单
         function renderNavigation() {
             const navContainer = document.getElementById('navLinks');
             const mobileNav = document.getElementById('mobileNavLinks');
@@ -521,17 +540,71 @@
             let navHTML = '';
             let mobileHTML = '';
             
-            SECTIONS.forEach(section => {
-                const active = section.id === 'destinations' ? 'active' : '';
-                navHTML += `<li><a href="#${section.id}" class="${active}" data-section="${section.id}">${section.icon} ${section.title}</a></li>`;
-                mobileHTML += `<li><a href="#${section.id}" onclick="closeMobileMenu()">${section.icon} ${section.title}</a></li>`;
+            // 桌面端：只渲染下拉菜单分组，避免重复拥挤
+            NAV_GROUPS.forEach(group => {
+                const section = SECTIONS.find(s => s.id === group.items[0]);
+                navHTML += `
+                    <li class="nav-dropdown">
+                        <a href="#${group.items[0]}" class="dropdown-toggle">
+                            ${group.icon} ${group.name} <span class="dropdown-arrow">▼</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            ${group.items.map(itemId => {
+                                const s = SECTIONS.find(s => s.id === itemId);
+                                return `<li><a href="#${s.id}">${s.icon} ${s.title}</a></li>`;
+                            }).join('')}
+                        </ul>
+                    </li>
+                `;
             });
             
+            // 添加联系按钮
+            navHTML += `<li><a href="#contact" class="btn-contact-nav">📞 咨询</a></li>`;
+            
+            // 移动端：分组显示
+            NAV_GROUPS.forEach(group => {
+                mobileHTML += `<li class="mobile-group-title">${group.icon} ${group.name}</li>`;
+                group.items.forEach(itemId => {
+                    const s = SECTIONS.find(s => s.id === itemId);
+                    mobileHTML += `<li><a href="#${s.id}" onclick="closeMobileMenu()">${s.icon} ${s.title}</a></li>`;
+                });
+            });
+            
+            mobileHTML += `<li><a href="#contact" onclick="closeMobileMenu()">📞 联系我们</a></li>`;
             
             mobileHTML += `<li><a href="#contact" onclick="closeMobileMenu()">📞 联系我们</a></li>`;
             
             navContainer.innerHTML = navHTML;
             mobileNav.innerHTML = mobileHTML;
+            
+            // 初始化下拉菜单交互
+            initDropdowns();
+        }
+        
+        // 初始化下拉菜单
+        function initDropdowns() {
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // 关闭其他下拉菜单
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) d.classList.remove('open');
+                    });
+                    // 切换当前下拉菜单
+                    dropdown.classList.toggle('open');
+                });
+            });
+            
+            // 点击页面其他区域关闭下拉菜单
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-dropdown')) {
+                    dropdowns.forEach(d => d.classList.remove('open'));
+                }
+            });
         }
 
         // 渲染所有板块

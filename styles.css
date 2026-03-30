@@ -1955,6 +1955,78 @@ html {
     color: var(--primary);
 }
 
+/* 下拉菜单样式 */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.nav-dropdown .dropdown-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s;
+}
+
+.nav-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    min-width: 160px;
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-dropdown.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(8px);
+}
+
+.nav-dropdown .dropdown-menu li {
+    list-style: none;
+}
+
+.nav-dropdown .dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--dark);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.nav-dropdown .dropdown-menu a:hover {
+    background: var(--light-secondary);
+    color: var(--primary);
+    padding-left: 25px;
+}
+
+/* 移动端分组标题 */
+.mobile-group-title {
+    font-size: 0.8rem !important;
+    color: var(--gray) !important;
+    padding: 12px 25px 6px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 /* 按钮颜色统一 */
 .btn-primary {
     background: var(--gradient-primary);
@@ -4708,4 +4780,118 @@ input, textarea, select {
         font-size: 1.2rem;
         white-space: nowrap;
     }
+}
+
+/* 下拉菜单样式 */
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.dropdown-toggle:hover {
+    background: var(--light);
+}
+
+.dropdown-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s;
+}
+
+.nav-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1001;
+    margin-top: 8px;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--dark);
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background: var(--light);
+    color: var(--primary);
+    padding-left: 25px;
+}
+
+.btn-contact-nav {
+    background: var(--primary);
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 20px !important;
+    transition: all 0.3s;
+}
+
+.btn-contact-nav:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-2px);
+}
+
+/* 移动端分组标题 */
+.mobile-group-title {
+    font-weight: 600;
+    color: var(--primary);
+    padding: 10px 15px 5px;
+    font-size: 0.85rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Hero 区优化 - 添加渐变背景 */
+.hero {
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #14b8a6 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-overlay {
+    background: rgba(0,0,0,0.2);
 }
