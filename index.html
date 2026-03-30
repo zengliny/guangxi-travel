@@ -127,6 +127,7 @@
 </script>
 </head>
 <body>
+    <div class="menu-backdrop" onclick="closeMobileMenu()"></div>
     <!-- 顶部导航 -->
     <header class="header">
         <nav class="nav-container">
@@ -669,10 +670,23 @@
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('active');
+            // 控制遮罩层
+            const backdrop = document.querySelector('.menu-backdrop');
+            if (backdrop) {
+                backdrop.classList.toggle('active');
+            }
+            // 菜单打开时隐藏悬浮按钮
+            document.body.classList.toggle('menu-open', menu.classList.contains('active'));
         }
         
         function closeMobileMenu() {
-            document.getElementById('mobileMenu').classList.remove('active');
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.remove('active');
+            const backdrop = document.querySelector('.menu-backdrop');
+            if (backdrop) {
+                backdrop.classList.remove('active');
+            }
+            document.body.classList.remove('menu-open');
         }
 
         // 弹窗
