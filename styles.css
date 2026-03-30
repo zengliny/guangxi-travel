@@ -2240,3 +2240,401 @@ img.lazy.loaded {
     }
 }
 
+
+/* ==================== UI 深度优化 v6.0 ==================== */
+
+/* ===== 1. 视觉层次增强 ===== */
+
+/* 板块间距 */
+.section {
+    padding: 60px 0;
+    margin: 0;
+    position: relative;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,168,107,0.2), transparent);
+}
+
+/* 板块背景交替 */
+.section:nth-child(odd) {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.section:nth-child(even) {
+    background: #ffffff;
+}
+
+/* ===== 2. 卡片设计升级 ===== */
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* 卡片图片优化 */
+.card-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg, 
+        transparent 0%, 
+        transparent 50%, 
+        rgba(0,0,0,0.4) 100%
+    );
+}
+
+/* 标签悬浮效果 */
+.card-tag {
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.card:hover .card-tag {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* 价格标签优化 */
+.card-price {
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+.card:hover .card-price {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0,168,107,0.3);
+}
+
+/* ===== 3. 按钮升级 ===== */
+
+.card-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.card-btn:hover::before {
+    left: 100%;
+}
+
+.card-btn:active {
+    transform: scale(0.95);
+}
+
+/* ===== 4. 搜索框升级 ===== */
+
+.search-box {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.search-box:focus-within {
+    border-color: #00a86b;
+    box-shadow: 0 0 0 4px rgba(0,168,107,0.1), 0 4px 20px rgba(0,168,107,0.2);
+    transform: scale(1.02);
+}
+
+/* ===== 5. 筛选器升级 ===== */
+
+.filter-bar {
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.filter-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 35px;
+}
+
+.filter-group select:hover {
+    border-color: #00a86b;
+}
+
+/* ===== 6. 预约按钮升级 ===== */
+
+.booking-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+}
+
+.booking-fab::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #00a86b, #00d4aa);
+    z-index: -1;
+    animation: fab-pulse 2s infinite;
+}
+
+@keyframes fab-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+/* ===== 7. 导航栏升级 ===== */
+
+.navbar {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #00a86b;
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* ===== 8. Hero 区域升级 ===== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0,168,107,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(102,126,234,0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* ===== 9. 空状态优化 ===== */
+
+.no-results {
+    background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.no-results-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===== 10. 表单交互升级 ===== */
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,168,107,0.15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #cbd5e1;
+}
+
+/* ===== 11. 链接交互升级 ===== */
+
+a {
+    position: relative;
+    text-decoration: none;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* ===== 12. 页脚升级 ===== */
+
+.footer {
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00a86b, #667eea, #764ba2, #00a86b);
+    background-size: 300% 100%;
+    animation: gradient-flow 3s linear infinite;
+}
+
+@keyframes gradient-flow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* ===== 13. 滚动条美化 ===== */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00a86b, #00d4aa);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #008b5e, #00a86b);
+}
+
+/* ===== 14. 移动端优化 ===== */
+
+@media (max-width: 768px) {
+    .section {
+        padding: 40px 0;
+    }
+    
+    .card {
+        margin-bottom: 16px;
+    }
+    
+    .filter-bar {
+        top: 60px;
+    }
+    
+    .booking-fab {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 20px;
+    }
+    
+    .footer {
+        padding: 30px 15px;
+    }
+}
+
+/* ===== 15. 动画增强 ===== */
+
+/* 卡片入场 */
+.card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardEnter 0.6s ease forwards;
+}
+
+@keyframes cardEnter {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 板块入场 */
+.section {
+    opacity: 0;
+    animation: sectionEnter 0.8s ease forwards;
+}
+
+@keyframes sectionEnter {
+    to {
+        opacity: 1;
+    }
+}
+
+/* 浮动动画 */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===== 16. 字体优化 ===== */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
