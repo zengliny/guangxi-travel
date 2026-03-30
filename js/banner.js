@@ -162,6 +162,13 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// ESC 键关闭弹窗
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePropertyModal();
+    }
+});
+
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
     renderFeaturedProperties();
