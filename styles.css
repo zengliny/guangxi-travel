@@ -74,36 +74,44 @@ body {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    height: 60px;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px 20px;
+    padding: 0 20px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--primary-dark);
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 12px;
     align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--dark);
     font-weight: 500;
+    font-size: 0.9rem;
+    padding: 6px 10px;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -113,9 +121,11 @@ body {
 .btn-contact {
     background: var(--primary);
     color: white !important;
-    padding: 10px 24px;
-    border-radius: 25px;
+    padding: 6px 16px;
+    border-radius: 20px;
     transition: all 0.3s;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .btn-contact:hover {
