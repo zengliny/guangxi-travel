@@ -711,7 +711,7 @@ body {
     
     /* 导航链接隐藏，使用移动端菜单 */
     .nav-links {
-        display: none !important;
+        display: none;
     }
     
     /* 移动端菜单优化 - 解决遮挡问题 */
@@ -2937,7 +2937,7 @@ h6 { font-size: var(--text-base); font-weight: 500; }
     }
     
     .navbar, .booking-fab, .search-container, .filter-bar {
-        display: none !important;
+        display: none;
     }
 }
 
