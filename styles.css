@@ -4224,3 +4224,41 @@ html {
         font-size: 2rem;
     }
 }
+
+/* 移动端触摸优化 */
+@media (hover: none) and (pointer: coarse) {
+    .btn-contact:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .card:hover,
+    .guide-card:hover,
+    .hotel-card:hover,
+    .search-btn:hover {
+        transform: none;
+    }
+    
+    .card:active,
+    .guide-card:active,
+    .hotel-card:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+}
+
+/* 移动端点击高亮移除 */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 移动端输入框优化 */
+input, textarea, select {
+    font-size: 16px; /* 防止 iOS 缩放 */
+}
+
+/* 移动端安全区域 */
+@supports (padding: max(0px)) {
+    .floating-contact {
+        padding-right: max(20px, env(safe-area-inset-right));
+        padding-bottom: max(30px, env(safe-area-inset-bottom));
+    }
+}
