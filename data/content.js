@@ -34,6 +34,9 @@ const SEO_CONFIG = {
 
 // ==================== 板块内容配置 ====================
 
+// 内容对象声明
+const CONTENT = {};
+
 // 1. 热门景点 (9个)
 CONTENT.destinations = {
     title: "热门景点",
