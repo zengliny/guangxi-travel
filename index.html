@@ -3,27 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>广西旅游达人 | 涠洲岛、德天瀑布、阳朔 - 导游、民宿、攻略</title>
-    <meta name="description" content="广西本地旅游达人，带你玩转涠洲岛、德天瀑布、阳朔西街。提供私人导游、特色民宿、免费攻略咨询服务。">
+    
+    <!-- SEO 基础配置 -->
+    <title>[板块名称] | 广西旅游达人 - 北海民宿、租房、候鸟养老、旅游房产</title>
+    <meta name="description" content="广西本地旅游达人，提供北海民宿、租房、候鸟养老、旅游房产、房屋托管、拍卖房代办、房屋置换等一站式服务。">
+    <meta name="keywords" content="广西旅游,北海旅游,涠洲岛,德天瀑布,阳朔,民宿推荐,租房信息,候鸟养老,旅游房产,房屋托管,拍卖房,房屋置换">
+    <meta name="author" content="广西旅游达人">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://guangxi-travel.pages.dev">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="广西旅游达人 | 北海民宿、租房、候鸟养老、旅游房产">
+    <meta property="og:description" content="广西本地一站式旅游服务：景点攻略、民宿推荐、租房信息、候鸟养老、旅游房产、房屋托管、拍卖房代办、房屋置换">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://guangxi-travel.pages.dev">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="广西旅游达人 | 北海民宿、租房、候鸟养老、旅游房产">
+    <meta name="twitter:description" content="广西本地一站式旅游服务">
+    
+    <!-- 结构化数据 - Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "广西旅游达人",
+        "description": "广西本地旅游服务，提供景点攻略、民宿推荐、租房、候鸟养老、旅游房产等服务",
+        "url": "https://guangxi-travel.pages.dev",
+        "areaServed": {
+            "@type": "State",
+            "name": "广西壮族自治区"
+        },
+        "serviceType": ["旅游咨询", "民宿预订", "租房服务", "候鸟养老", "旅游房产", "房屋托管", "拍卖房代办", "房屋置换"],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "availableLanguage": "Chinese"
+        }
+    }
+    </script>
+    
+    <!-- 结构化数据 - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首页",
+            "item": "https://guangxi-travel.pages.dev"
+        }]
+    }
+    </script>
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD for each section -->
+    <script id="section-schema" type="application/ld+json"></script>
 </head>
 <body>
     <!-- 顶部导航 -->
     <header class="header">
         <nav class="nav-container">
-            <a href="#" class="logo">🏝️ 广西旅游</a>
-            <ul class="nav-links">
-                <li><a href="#destinations">景点攻略</a></li>
-                <li><a href="#guide">导游服务</a></li>
-                <li><a href="#hotel">民宿推荐</a></li>
-                <li><a href="#contact" class="btn-contact">立即咨询</a></li>
+            <a href="/" class="logo">🏝️ 广西旅游</a>
+            <ul class="nav-links" id="navLinks">
+                <!-- 动态加载导航 -->
             </ul>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
         </nav>
     </header>
+
+    <!-- 移动端菜单 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul id="mobileNavLinks"></ul>
+    </div>
 
     <!-- Hero 区 -->
     <section class="hero">
@@ -31,11 +89,11 @@
         <div class="hero-content">
             <span class="hero-badge">🎯 广西本地达人</span>
             <h1>带你玩转广西山水</h1>
-            <p class="hero-subtitle">涠洲岛 · 德天瀑布 · 阳朔西街 · 南宁老友粉</p>
-            <p class="hero-desc">私人导游 | 特色民宿 | 行程规划 | 美食推荐</p>
+            <p class="hero-subtitle">涠洲岛 · 德天瀑布 · 阳朔西街 · 北海银滩</p>
+            <p class="hero-desc">景点攻略 | 民宿推荐 | 租房信息 | 候鸟养老 | 旅游房产 | 房屋托管 | 拍卖房 | 房屋置换</p>
             <div class="hero-btns">
-                <a href="#contact" class="btn-primary">获取免费攻略</a>
-                <a href="#destinations" class="btn-secondary">查看景点</a>
+                <a href="#contact" class="btn-primary">获取免费咨询</a>
+                <a href="#homestay" class="btn-secondary">查看民宿</a>
             </div>
             <div class="hero-stats">
                 <div class="stat">
@@ -43,7 +101,7 @@
                     <span class="stat-label">服务游客</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-num">50+</span>
+                    <span class="stat-num">100+</span>
                     <span class="stat-label">合作民宿</span>
                 </div>
                 <div class="stat">
@@ -54,202 +112,35 @@
         </div>
     </section>
 
-    <!-- 热门景点 -->
-    <section id="destinations" class="section">
-        <div class="container">
-            <h2 class="section-title">🏝️ 热门景点</h2>
-            <p class="section-subtitle">这些地方值得你去一次</p>
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-img" style="background: linear-gradient(135deg, #00b4db, #0083b0);">
-                        <span class="card-tag">必去</span>
-                    </div>
-                    <div class="card-body">
-                        <h3>涠洲岛</h3>
-                        <p>中国最大火山岛，鳄鱼山、贝壳沙滩、滴水丹屏，看日出日落最佳目的地</p>
-                        <div class="card-tags">
-                            <span>🚢 上岛需乘船</span>
-                            <span>🏖️ 海岛风光</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                        <span class="card-tag">壮观</span>
-                    </div>
-                    <div class="card-body">
-                        <h3>德天瀑布</h3>
-                        <p>亚洲第一、世界第四大跨国瀑布，与越南板约瀑布相连</p>
-                        <div class="card-tags">
-                            <span>🌊 瀑布奇观</span>
-                            <span>🇻🇳 边境游</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                        <span class="card-tag">网红</span>
-                    </div>
-                    <div class="card-body">
-                        <h3>阳朔西街</h3>
-                        <p>漓江畔的地球村，洋人街、啤酒鱼、田螺酿，夜晚最热闹</p>
-                        <div class="card-tags">
-                            <span>🎭 夜生活</span>
-                            <span>🍜 美食天堂</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img" style="background: linear-gradient(135deg, #fa709a, #fee140);">
-                        <span class="card-tag">美食</span>
-                    </div>
-                    <div class="card-body">
-                        <h3>南宁中山路</h3>
-                        <p>老友粉、螺蛳粉、烤生蚝，广西夜市小吃天花板</p>
-                        <div class="card-tags">
-                            <span>🍜 地道美食</span>
-                            <span>🌙 夜宵圣地</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 导游服务 -->
-    <section id="guide" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">👨‍🏫 导游服务</h2>
-            <p class="section-subtitle">本地人带路，不踩坑</p>
-            <div class="guide-grid">
-                <div class="guide-card">
-                    <div class="guide-icon">🎯</div>
-                    <h3>定制行程</h3>
-                    <p>根据你的时间和预算，量身定制广西游路线</p>
-                </div>
-                <div class="guide-card">
-                    <div class="guide-icon">🚗</div>
-                    <h3>包车接送</h3>
-                    <p>机场/车站接送，景点间全程接送，省心省力</p>
-                </div>
-                <div class="guide-card">
-                    <div class="guide-icon">🍜</div>
-                    <h3>美食向导</h3>
-                    <p>带你去本地人才知道的馆子，不被游客价坑</p>
-                </div>
-                <div class="guide-card">
-                    <div class="guide-icon">📸</div>
-                    <h3>拍照陪玩</h3>
-                    <p>知道哪些角度出片，帮你拍出点赞爆炸的朋友圈</p>
-                </div>
-            </div>
-            <div class="guide-price">
-                <div class="price-item">
-                    <span class="price-label">一日游</span>
-                    <span class="price-value">¥399起</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-label">包车一天</span>
-                    <span class="price-value">¥599起</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-label">定制3日</span>
-                    <span class="price-value">¥1499起</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 民宿推荐 -->
-    <section id="hotel" class="section">
-        <div class="container">
-            <h2 class="section-title">🏨 民宿推荐</h2>
-            <p class="section-subtitle">合作优质民宿，入住享优惠</p>
-            <div class="hotel-grid">
-                <div class="hotel-card">
-                    <div class="hotel-img" style="background: linear-gradient(45deg, #667eea, #764ba2);">
-                        <span class="hotel-tag">涠洲岛</span>
-                    </div>
-                    <div class="hotel-body">
-                        <h3>海边民宿</h3>
-                        <p>出门就是沙滩，看日出、赶海超方便</p>
-                        <span class="hotel-price">¥200-500/晚</span>
-                    </div>
-                </div>
-                <div class="hotel-card">
-                    <div class="hotel-img" style="background: linear-gradient(45deg, #11998e, #38ef7d);">
-                        <span class="hotel-tag">阳朔</span>
-                    </div>
-                    <div class="hotel-body">
-                        <h3>漓江景观房</h3>
-                        <p>推窗见山水，甲天下景色就在眼前</p>
-                        <span class="hotel-price">¥300-800/晚</span>
-                    </div>
-                </div>
-                <div class="hotel-card">
-                    <div class="hotel-img" style="background: linear-gradient(45deg, #fa709a, #fee140);">
-                        <span class="hotel-tag">德天</span>
-                    </div>
-                    <div class="hotel-body">
-                        <h3>瀑布观景酒店</h3>
-                        <p>足不出户看瀑布云雾，位置绝佳</p>
-                        <span class="hotel-price">¥250-600/晚</span>
-                    </div>
-                </div>
-            </div>
-            <p class="hotel-tip">💡 预订说明：通过我预订可享会员价，还能免费升级房型</p>
-        </div>
-    </section>
-
-    <!-- 为什么选我们 -->
-    <section class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">✨ 为什么选我们</h2>
-            <div class="why-grid">
-                <div class="why-item">
-                    <span class="why-num">01</span>
-                    <h3>本地人优势</h3>
-                    <p>生在广西，长在广西，知道哪里好玩，哪里好吃，哪里便宜</p>
-                </div>
-                <div class="why-item">
-                    <span class="why-num">02</span>
-                    <h3>价格透明</h3>
-                    <p>无中间商赚差价，门票、包车、民宿都是内部价</p>
-                </div>
-                <div class="why-item">
-                    <span class="why-num">03</span>
-                    <h3>服务靠谱</h3>
-                    <p>先服务后收费，不满意随时退款，4.9分口碑保障</p>
-                </div>
-                <div class="why-item">
-                    <span class="why-num">04</span>
-                    <h3>资源丰富</h3>
-                    <p>合作50+民宿、10+景区、酒店协议价</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- 动态内容板块容器 -->
+    <main id="mainContent">
+        <!-- 板块将通过JS动态插入 -->
+    </main>
 
     <!-- 联系方式 -->
-    <section id="contact" class="section section-contact">
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <div class="contact-box">
-                <h2>📱 立即咨询</h2>
-                <p>添加微信，领取免费广西旅游攻略</p>
-                <div class="contact-methods">
-                    <div class="contact-item">
-                        <span class="contact-icon">💬</span>
-                        <span>微信：扫码添加</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <span>电话：1xx-xxxx-xxxx</span>
-                    </div>
+            <h2 class="section-title">📞 联系我们</h2>
+            <p class="section-subtitle">添加微信 / 电话咨询，获取免费服务</p>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>微信咨询</h3>
+                    <p>添加微信，一对一服务</p>
+                    <button class="btn-primary" onclick="showWechat()">扫码添加</button>
                 </div>
-                <a href="https://work.weixin.qq.com/kfid/YOUR_WORK_WECHAT_ID" class="btn-wechat">
-                    <span>👋</span> 点击添加企业微信
-                </a>
-                <p class="contact-tip">⚡ 24小时内必通过，节假日无休</p>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>电话咨询</h3>
+                    <p>工作日 9:00-18:00</p>
+                    <a href="tel:XXXXXXXXXXX" class="btn-secondary">立即拨打</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>办公地址</h3>
+                    <p>广西北海市银海区</p>
+                    <span class="text-muted">具体地址详询</span>
+                </div>
             </div>
         </div>
     </section>
@@ -257,24 +148,319 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 广西旅游达人 | 服务范围：南宁、涠洲岛、阳朔、德天瀑布</p>
-            <p class="footer-tip">本页面用于获客咨询，非OTA平台</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🏝️ 广西旅游达人</h4>
+                    <p>广西本地一站式旅游服务</p>
+                    <p>专注：景点攻略 | 民宿 | 租房 | 候鸟养老 | 旅游房产</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#destinations">景点攻略</a></li>
+                        <li><a href="#homestay">民宿推荐</a></li>
+                        <li><a href="#rental">租房信息</a></li>
+                        <li><a href="#elderly">候鸟养老</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>更多服务</h4>
+                    <ul>
+                        <li><a href="#property">旅游房产</a></li>
+                        <li><a href="#trust">房屋托管</a></li>
+                        <li><a href="#auction">拍卖房</a></li>
+                        <li><a href="#exchange">房屋置换</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 广西旅游达人. All rights reserved.</p>
+                <p>SEO优化版 | 结构化数据 | 移动端友好</p>
+            </div>
         </div>
     </footer>
 
+    <!-- 微信二维码弹窗 -->
+    <div class="modal" id="wechatModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('wechatModal')">&times;</span>
+            <h3>💬 微信扫码添加</h3>
+            <div class="qr-placeholder">
+                <div class="qr-box">
+                    <span>📷</span>
+                    <p>微信二维码<br><small>请添加微信详询</small></p>
+                </div>
+            </div>
+            <p class="text-muted">备注：广西旅游</p>
+        </div>
+    </div>
+
+    <!-- 平滑滚动 -->
+    <script src="data/content.js"></script>
     <script>
-        // 简单的移动端菜单
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+        // ==================== 站点配置 ====================
+        const SITE_CONFIG = {
+            siteName: '广西旅游达人',
+            baseUrl: 'https://guangxi-travel.pages.dev'
+        };
+
+        // ==================== 内容板块定义 ====================
+        const SECTIONS = [
+            {
+                id: 'destinations',
+                icon: '🗺️',
+                title: '热门景点',
+                description: '广西热门旅游景点攻略',
+                color: '#00b4db'
+            },
+            {
+                id: 'homestay',
+                icon: '🏠',
+                title: '民宿推荐',
+                description: '北海、涠洲岛、阳朔优质民宿',
+                color: '#11998e'
+            },
+            {
+                id: 'rental',
+                icon: '🏡',
+                title: '租房信息',
+                description: '长短租房源，拎包入住',
+                color: '#38ef7d'
+            },
+            {
+                id: 'elderly',
+                icon: '🦅',
+                title: '候鸟养老',
+                description: '北海过冬养老优势分析',
+                color: '#f093fb'
+            },
+            {
+                id: 'property',
+                icon: '🏘️',
+                title: '旅游房产',
+                description: '旅游地产投资分析',
+                color: '#f5576c'
+            },
+            {
+                id: 'trust',
+                icon: '🤝',
+                title: '房屋托管',
+                description: '帮你省心做房东',
+                color: '#eb3349'
+            },
+            {
+                id: 'auction',
+                icon: '⚖️',
+                title: '拍卖房',
+                description: '法拍房信息，手续代办',
+                color: '#ff6b6b'
+            },
+            {
+                id: 'exchange',
+                icon: '🔄',
+                title: '房屋置换',
+                description: '换购换租，一站式服务',
+                color: '#4facfe'
+            }
+        ];
+
+        // ==================== 初始化 ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderNavigation();
+            renderSections();
+            updateSEO('destinations');
+            setupScrollSpy();
         });
+
+        // 渲染导航
+        function renderNavigation() {
+            const navContainer = document.getElementById('navLinks');
+            const mobileNav = document.getElementById('mobileNavLinks');
+            
+            let navHTML = '';
+            let mobileHTML = '';
+            
+            SECTIONS.forEach(section => {
+                const active = section.id === 'destinations' ? 'active' : '';
+                navHTML += `<li><a href="#${section.id}" class="${active}" data-section="${section.id}">${section.icon} ${section.title}</a></li>`;
+                mobileHTML += `<li><a href="#${section.id}" onclick="closeMobileMenu()">${section.icon} ${section.title}</a></li>`;
+            });
+            
+            navHTML += `<li><a href="#contact" class="btn-contact">📞 咨询</a></li>`;
+            mobileHTML += `<li><a href="#contact" onclick="closeMobileMenu()">📞 联系我们</a></li>`;
+            
+            navContainer.innerHTML = navHTML;
+            mobileNav.innerHTML = mobileHTML;
+        }
+
+        // 渲染所有板块
+        function renderSections() {
+            const mainContent = document.getElementById('mainContent');
+            let sectionsHTML = '';
+            
+            SECTIONS.forEach(section => {
+                const content = CONTENT[section.id];
+                if (!content) return;
+                
+                sectionsHTML += `
+                    <section id="${section.id}" class="section" data-section="${section.id}">
+                        <div class="container">
+                            <h2 class="section-title" style="border-left-color: ${section.color}">${section.icon} ${content.title}</h2>
+                            <p class="section-subtitle">${content.description}</p>
+                            <div class="cards-grid">
+                                ${renderCards(content.items, section)}
+                            </div>
+                        </div>
+                    </section>
+                `;
+            });
+            
+            mainContent.innerHTML = sectionsHTML;
+        }
+
+        // 渲染卡片
+        function renderCards(items, section) {
+            if (!items || items.length === 0) return '<p class="text-muted">暂无内容</p>';
+            
+            return items.map(item => {
+                const tags = item.tags ? item.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
+                const price = item.price || item.priceRange || '';
+                const features = item.features || item.service || [];
+                const featureHTML = features.length > 0 
+                    ? `<div class="card-features">${features.map(f => `<span>✓ ${f}</span>`).join('')}</div>` 
+                    : '';
+                
+                return `
+                    <div class="card" data-item-id="${item.id}">
+                        ${item.highlight ? `<span class="card-tag" style="background: ${section.color}">${item.highlight}</span>` : ''}
+                        <div class="card-body">
+                            <h3>${item.name}</h3>
+                            <p>${item.description}</p>
+                            <div class="card-tags">${tags}</div>
+                            ${price ? `<div class="card-price">${price}</div>` : ''}
+                            ${featureHTML}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // SEO 更新
+        function updateSEO(sectionId) {
+            const section = SECTIONS.find(s => s.id === sectionId);
+            const content = CONTENT[sectionId];
+            
+            if (!section || !content) return;
+            
+            // 更新 title
+            document.title = `${content.title} | 广西旅游达人 - ${content.description}`;
+            
+            // 更新 meta description
+            document.querySelector('meta[name="description"]').setAttribute('content', 
+                `${content.title}：${content.description}。${content.items.slice(0,3).map(i => i.name).join('、')}等。联系电话/微信咨询`
+            );
+            
+            // 更新 keywords
+            const keywords = `${content.title},${content.items.map(i => i.name).join(',')},广西旅游,北海旅游`;
+            document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+            
+            // 更新 Open Graph
+            document.querySelector('meta[property="og:title"]').setAttribute('content', 
+                `${content.title} | 广西旅游达人`
+            );
+            document.querySelector('meta[property="og:description"]').setAttribute('content', content.description);
+            
+            // 更新结构化数据
+            updateSchema(sectionId, content);
+        }
+
+        // 更新结构化数据
+        function updateSchema(sectionId, content) {
+            const breadcrumbSchema = {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "首页",
+                        "item": SITE_CONFIG.baseUrl
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": content.title,
+                        "item": `${SITE_CONFIG.baseUrl}/#${sectionId}`
+                    }
+                ]
+            };
+            
+            document.getElementById('section-schema').textContent = JSON.stringify(breadcrumbSchema);
+        }
+
+        // 滚动监听
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // 更新 SEO
+                if (current && current !== 'contact') {
+                    updateSEO(current);
+                }
+            });
+        }
+
+        // ==================== 工具函数 ====================
         
+        // 移动端菜单
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+        
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+        }
+
+        // 弹窗
+        function showWechat() {
+            document.getElementById('wechatModal').style.display = 'flex';
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        
+        // 点击弹窗外部关闭
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if(target) {
-                    target.scrollIntoView({behavior: 'smooth', block: 'start'});
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
