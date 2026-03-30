@@ -3976,3 +3976,74 @@ html {
         grid-template-columns: 1fr;
     }
 }
+
+/* 弹窗手机端适配 */
+@media (max-width: 768px) {
+    .property-modal {
+        padding: 15px;
+        align-items: flex-end;
+    }
+    
+    .property-modal-content {
+        border-radius: 24px 24px 0 0;
+        max-height: 85vh;
+    }
+    
+    .property-modal-header {
+        padding: 24px;
+    }
+    
+    .property-modal-header h3 {
+        font-size: 1.35rem;
+    }
+    
+    .property-modal-body {
+        padding: 20px;
+    }
+    
+    .property-info-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    
+    .property-info-item {
+        padding: 14px;
+    }
+    
+    .property-info-item .value {
+        font-size: 1.1rem;
+    }
+    
+    .property-contact {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .property-contact button,
+    .property-contact a {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .property-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .banner-section {
+        height: 280px;
+    }
+    
+    .banner-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .banner-content p {
+        font-size: 0.95rem;
+    }
+    
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
