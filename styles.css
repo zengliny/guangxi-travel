@@ -4604,3 +4604,12 @@ input, textarea, select {
 .mobile-menu li a[href^="#"] {
     cursor: pointer;
 }
+
+/* 强制移动端菜单显示 */
+#mobileMenu {
+    display: none !important;
+}
+
+#mobileMenu.active {
+    display: block !important;
+}
