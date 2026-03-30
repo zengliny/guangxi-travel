@@ -2078,3 +2078,165 @@ hr {
     }
 }
 
+
+/* ==================== 性能优化样式 ==================== */
+
+/* 图片懒加载 */
+img.lazy {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+img.lazy.loaded {
+    opacity: 1;
+}
+
+/* 性能监控面板（调试用） */
+.perf-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.8);
+    color: #00ff00;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 12px;
+    z-index: 9999;
+    max-width: 250px;
+    display: none;
+}
+
+.perf-panel.show {
+    display: block;
+}
+
+.perf-panel .title {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.perf-panel .metric {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.perf-panel .metric-label {
+    color: #aaa;
+}
+
+.perf-panel .metric-value {
+    color: #00ff00;
+}
+
+.perf-panel .metric-value.warning {
+    color: #ffaa00;
+}
+
+.perf-panel .metric-value.error {
+    color: #ff4444;
+}
+
+/* PWA 安装提示 */
+.pwa-prompt {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(100%); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+.pwa-prompt .icon {
+    font-size: 32px;
+}
+
+.pwa-prompt .text h4 {
+    margin: 0 0 5px;
+    color: #333;
+}
+
+.pwa-prompt .text p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.pwa-prompt .btn {
+    padding: 8px 16px;
+    background: #00a86b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.pwa-prompt .close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    background: #666;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* 离线页面样式（已内置） */
+
+/* Service Worker 提示 */
+.sw-status {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    z-index: 9999;
+}
+
+.sw-status.active {
+    background: #10b981;
+    color: white;
+}
+
+.sw-status.inactive {
+    background: #ef4444;
+    color: white;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .perf-panel {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    .pwa-prompt {
+        left: 10px;
+        right: 10px;
+        transform: none;
+    }
+}
+
