@@ -173,3 +173,72 @@ document.addEventListener('keydown', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
     renderFeaturedProperties();
 });
+
+// 搜索功能
+function doSearch() {
+    const region = document.getElementById('regionFilter').value;
+    const type = document.getElementById('typeFilter').value;
+    const price = document.getElementById('priceFilter').value;
+    
+    const results = filterProperties(region, type, price);
+    renderSearchResults(results);
+}
+
+function quickSearch(keyword) {
+    // 设置筛选条件
+    if (keyword.includes('北海')) {
+        document.getElementById('regionFilter').value = '北海';
+    } else if (keyword.includes('涠洲岛')) {
+        document.getElementById('regionFilter').value = '涠洲岛';
+    } else if (keyword.includes('阳朔')) {
+        document.getElementById('regionFilter').value = '阳朔';
+    }
+    
+    doSearch();
+    
+    // 滚动到结果区域
+    document.querySelector('.featured-section')?.scrollIntoView({behavior: 'smooth'});
+}
+
+function filterProperties(region, type, price) {
+    // 简单筛选逻辑 - 实际可连接后端 API
+    const allProperties = window.properties || [];
+    
+    return allProperties.filter(p => {
+        if (region && !p.region?.includes(region)) return false;
+        if (type && !p.type?.includes(type)) return false;
+        if (price) {
+            const [min, max] = price.split('-').map(v => v === '1000+' ? Infinity : parseInt(v));
+            const pPrice = p.price || 0;
+            if (max && pPrice > max) return false;
+            if (min !== undefined && pPrice < min) return false;
+        }
+        return true;
+    });
+}
+
+function renderSearchResults(results) {
+    const grid = document.getElementById('featuredGrid');
+    if (!grid) return;
+    
+    if (results.length === 0) {
+        grid.innerHTML = '<div class="no-results">未找到匹配房源，请尝试其他筛选条件</div>';
+        return;
+    }
+    
+    grid.innerHTML = results.map(p => `
+        <div class="featured-card" onclick="showPropertyDetail(${p.id})">
+            <div class="card-image" style="background: linear-gradient(135deg, #0ea5e9, #06b6d4);">
+                <span class="card-tag">${p.region || '广西'}</span>
+            </div>
+            <div class="card-content">
+                <h3>${p.name}</h3>
+                <p class="card-location">📍 ${p.location}</p>
+                <div class="card-footer">
+                    <span class="card-price">¥${p.price}/晚</span>
+                    <span class="card-rating">⭐ ${p.rating || '5.0'}</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}

@@ -209,6 +209,46 @@
         </div>
     </section>
 
+    <!-- 搜索筛选区域 -->
+    <section class="section search-section">
+        <div class="container">
+            <h2 class="section-title">🔍 快速搜索</h2>
+            <div class="search-box">
+                <div class="search-filters">
+                    <select id="regionFilter" class="search-select">
+                        <option value="">全部地区</option>
+                        <option value="北海">北海</option>
+                        <option value="涠洲岛">涠洲岛</option>
+                        <option value="阳朔">阳朔</option>
+                        <option value="德天">德天瀑布</option>
+                    </select>
+                    <select id="typeFilter" class="search-select">
+                        <option value="">全部类型</option>
+                        <option value="民宿">民宿</option>
+                        <option value="酒店">酒店</option>
+                        <option value="租房">租房</option>
+                        <option value="养老">养老房产</option>
+                    </select>
+                    <select id="priceFilter" class="search-select">
+                        <option value="">不限价格</option>
+                        <option value="0-200">¥200以内</option>
+                        <option value="200-500">¥200-500</option>
+                        <option value="500-1000">¥500-1000</option>
+                        <option value="1000+">¥1000以上</option>
+                    </select>
+                </div>
+                <button class="search-btn" onclick="doSearch()">搜索</button>
+            </div>
+            <div class="search-tags">
+                <span class="search-tag" onclick="quickSearch('北海民宿')">北海民宿</span>
+                <span class="search-tag" onclick="quickSearch('涠洲岛')">涠洲岛</span>
+                <span class="search-tag" onclick="quickSearch('阳朔')">阳朔</span>
+                <span class="search-tag" onclick="quickSearch('养老')">候鸟养老</span>
+                <span class="search-tag" onclick="quickSearch('德天')">德天瀑布</span>
+            </div>
+        </div>
+    </section>
+
     <!-- 用户见证 -->
     <section class="section testimonials-section">
         <div class="container">

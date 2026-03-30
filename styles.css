@@ -4262,3 +4262,106 @@ input, textarea, select {
         padding-bottom: max(30px, env(safe-area-inset-bottom));
     }
 }
+
+/* 搜索筛选区域 */
+.search-section {
+    background: linear-gradient(135deg, #0c1929 0%, #1e3a5f 100%);
+    padding: 60px 0;
+    color: white;
+}
+
+.search-section .section-title {
+    color: white;
+}
+
+.search-box {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.search-filters {
+    display: flex;
+    gap: 12px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.search-select {
+    flex: 1;
+    min-width: 150px;
+    padding: 14px 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #334155;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.search-select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.search-btn {
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+}
+
+.search-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.search-tag {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.search-tag:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* 搜索手机端 */
+@media (max-width: 768px) {
+    .search-box {
+        flex-direction: column;
+    }
+    
+    .search-filters {
+        flex-direction: column;
+    }
+    
+    .search-select {
+        min-width: 100%;
+    }
+    
+    .search-btn {
+        width: 100%;
+    }
+}
