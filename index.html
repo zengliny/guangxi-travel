@@ -210,6 +210,78 @@
                 "@type": "Answer",
                 "text": "北海租房价格根据地段和配套不等：市区一室一厅约800-1200元/月，海景房约1500-2500元/月，涠洲岛民宿长租约1500-3000元/月。"
             }
+        },
+        {
+            "@type": "Question",
+            "name": "涠洲岛船票怎么买？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "可通过北海国际客运港官网或微信公众号预订船票，建议提前1-2天预订，旺季提前1周。票价约150元/人，航程约1小时。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "北海银滩有什么好玩？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "北海银滩被称为天下第一滩，沙质细腻白滑，海水清澈。适合游泳、日光浴、看日落，晚上还有音乐喷泉。周边有侨港风情街可以品尝海鲜。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "阳朔西街怎么玩？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "阳朔西街是桂林山水的精华所在，建议安排2-3天。可以骑行十里画廊、游遇龙河、银子岩、千古情演出，晚上逛西街品尝啤酒鱼。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "房屋托管靠谱吗？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "选择有资质的托管公司很重要。建议签订正式合同，明确租金支付方式、装修期、违约责任等。我们提供透明的托管流程和全程管理服务。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "拍卖房能不能买？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "拍卖房价格低于市场价，但存在一定风险。建议找专业人士协助调查产权、债务、腾房等问题。我们提供拍卖房全程代办服务。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "广西旅游找谁靠谱？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "选择广西本地有实体店、多年经验的旅游服务商更靠谱。我们服务5000+游客，98%好评率，提供一站式服务，无任何隐形收费。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "涠洲岛民宿推荐哪家？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "涠洲岛民宿主要集中在南湾街、贝壳沙滩、鳄鱼山附近。推荐选择靠近景点的民宿，方便出行。我们合作100+优质民宿，可根据需求推荐。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "德天瀑布门票多少钱？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "德天瀑布门票约80元/人，观光车35元。65岁以上老人可享优惠。门票含景区内电瓶车，建议游览2-3小时。雨季6-11月水量最大。"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "北海养老怎么样？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "北海是著名的候鸟养老城市，年均气温23°C，冬季温暖，空气质量优良。医疗配套完善，生活成本适中。推荐银海区、铁山港区等区域。"
+            }
         }
     ]
 }
@@ -529,10 +601,44 @@
                     <a href="tel:17200861361" class="btn-secondary">立即拨打</a>
                 </div>
                 <div class="contact-card">
-                    <div class="contact-icon">📍</div>
-                    <h3>办公地址</h3>
-                    <p>广西北海市银海区</p>
-                    <span class="text-muted">具体地址详询</span>
+                    <div class="contact-icon">📝</div>
+                    <h3>在线留言</h3>
+                    <p>填写信息，快速响应</p>
+                    <button class="btn-primary" onclick="showContactForm()">立即留言</button>
+                </div>
+            </div>
+            
+            <!-- 在线留言表单弹窗 -->
+            <div class="contact-form-modal" id="contactFormModal">
+                <div class="contact-form-content">
+                    <span class="modal-close" onclick="closeContactForm()">&times;</span>
+                    <h3>📝 留言咨询</h3>
+                    <p class="form-subtitle">提交后我们将第一时间联系您</p>
+                    <form id="contactForm" onsubmit="submitContactForm(event)">
+                        <div class="form-group">
+                            <input type="text" id="formName" name="name" placeholder="您的姓名 *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="formPhone" name="phone" placeholder="手机号码 *" required pattern="1[3-9]\d{9}">
+                        </div>
+                        <div class="form-group">
+                            <select id="formType" name="type" required>
+                                <option value="">请选择咨询类型 *</option>
+                                <option value="民宿">民宿预订</option>
+                                <option value="租房">租房信息</option>
+                                <option value="养老">候鸟养老</option>
+                                <option value="房产">旅游房产</option>
+                                <option value="托管">房屋托管</option>
+                                <option value="拍卖">拍卖房</option>
+                                <option value="其他">其他咨询</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="formMessage" name="message" placeholder="请描述您的需求..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">提交留言</button>
+                    </form>
+                    <p class="form-note">💡 提交即表示同意我们联系您，信息仅用于服务咨询，绝不外泄。</p>
                 </div>
             </div>
         </div>
@@ -754,8 +860,6 @@
             
             mobileHTML += `<li><a href="#contact" onclick="closeMobileMenu()">📞 联系我们</a></li>`;
             
-            mobileHTML += `<li><a href="#contact" onclick="closeMobileMenu()">📞 联系我们</a></li>`;
-            
             navContainer.innerHTML = navHTML;
             mobileNav.innerHTML = mobileHTML;
             
@@ -970,14 +1074,63 @@
             });
         }
         
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
+        // ==================== 在线留言表单 ====================
+        function showContactForm() {
+            const modal = document.getElementById('contactFormModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeContactForm() {
+            const modal = document.getElementById('contactFormModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('formName').value.trim();
+            const phone = document.getElementById('formPhone').value.trim();
+            const type = document.getElementById('formType').value;
+            const message = document.getElementById('formMessage').value.trim();
+            
+            if (!name || !phone || !type) {
+                alert('请填写必填信息');
+                return;
+            }
+            
+            // 模拟表单提交（实际应用中可发送到服务器或微信）
+            const formData = {
+                name: name,
+                phone: phone,
+                type: type,
+                message: message,
+                submitTime: new Date().toLocaleString('zh-CN')
+            };
+            
+            console.log('收到留言:', formData);
+            
+            // 显示提交成功提示
+            alert(`感谢您的留言！\n\n我们已经收到您的信息：\n- 姓名：${name}\n- 电话：${phone}\n- 类型：${type}\n\n我们将在24小时内联系您！`);
+            
+            // 重置表单
+            document.getElementById('contactForm').reset();
+            closeContactForm();
         }
         
         // 点击弹窗外部关闭
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
+            }
+            // 点击留言弹窗外部关闭
+            if (event.target.id === 'contactFormModal') {
+                closeContactForm();
             }
         }
 
@@ -1001,9 +1154,9 @@
                     // 动画结束后移除元素
                     setTimeout(function() {
                         loader.style.display = 'none';
-                    }, 500);
+                    }, 300);
                 }
-            }, 800); // 至少显示800ms，让用户看到加载动画
+            }, 500); // 优化：缩短到500ms，提升用户体验
         });
 
         // 如果3秒还没加载完成，强制隐藏loading
