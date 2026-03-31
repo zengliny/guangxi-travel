@@ -867,8 +867,7 @@ body {
     background: transparent;
     padding: 8px 10px;
     font-size: 14px;
-    flex: 1;
-    min-width: 100px;
+    width: 180px;
     outline: none;
     font-family: 'Noto Sans SC', sans-serif;
 }
@@ -882,9 +881,8 @@ body {
     border: none;
     cursor: pointer;
     font-size: 16px;
-    padding: 8px 12px;
+    padding: 5px;
     transition: transform 0.2s;
-    white-space: nowrap;
 }
 
 .search-btn:hover {
@@ -1090,25 +1088,23 @@ body {
         gap: 8px;
         margin: 10px;
         min-height: auto;
-        overflow: visible !important;
-        position: relative !important;
-        z-index: 1 !important;
+    }
+    
+    .filter-title {
+        font-size: 12px;
+        margin-right: 6px;
+        display: none;
     }
     
     .filter-group {
         flex: 1 1 auto;
         min-width: calc(50% - 4px);
         gap: 4px;
-        overflow: visible !important;
     }
     
     .filter-group label {
         font-size: 11px;
         display: none;
-    }
-    
-    .filter-group select {
-        overflow: visible !important;
     }
     
     .filter-group select {
@@ -5407,8 +5403,8 @@ input, textarea, select {
         cursor: pointer;
         background: #fff !important;
         border: 1px solid #ddd !important;
-        appearance: menulist !important;
-        -webkit-appearance: menulist !important;
+        appearance: none;
+        -webkit-appearance: none;
     }
     
     /* 景点卡片标签优化 - 不遮挡标题 */
@@ -5729,8 +5725,8 @@ input, textarea, select {
         background: #fff;
         cursor: pointer;
         pointer-events: auto !important;
-        appearance: menulist !important;
-        -webkit-appearance: menulist !important;
+        appearance: none;
+        -webkit-appearance: none;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: right 10px center;
@@ -5799,21 +5795,6 @@ input, textarea, select {
         -webkit-appearance: listbox !important;
         appearance: listbox !important;
         touch-action: manipulation !important;
-        overflow: visible !important;
-        transform: none !important;
-    }
-    
-    /* 修复 select 下拉弹窗被截断的问题 */
-    .search-filters {
-        overflow: visible !important;
-        transform: none !important;
-    }
-    
-    /* 确保卡片不限制下拉框 */
-    .property-card,
-    .card-tags,
-    .search-result-header {
-        overflow: visible !important;
     }
     
     /* 搜索按钮 */
@@ -6179,21 +6160,15 @@ input, textarea, select {
         flex-wrap: wrap !important;
         gap: 6px !important;
         padding: 6px !important;
-        overflow: visible !important;
-        position: relative !important;
-        z-index: auto !important;
     }
     
     .filter-group {
         flex: 1 1 30% !important;
-        overflow: visible !important;
     }
     
     .filter-group select {
         height: 32px !important;
         font-size: 11px !important;
-        overflow: visible !important;
-        transform: none !important;
     }
     
     /* ===== 卡片和标签 ===== */
@@ -6217,78 +6192,5 @@ input, textarea, select {
     [class*="popup"],
     [style*="fixed"][style*="z-index"] {
         display: none !important;
-    }
-}
-
-/* ============================================
-   移动端下拉框和搜索框最终修复
-   针对问题1：下拉框弹窗被截断
-   针对问题2：搜索栏按钮遮挡输入框
-   ============================================ */
-@media (max-width: 768px) {
-    /* 1. 解决下拉框弹窗被截断 - 核心修复 */
-    .search-section,
-    .search-section .container,
-    .search-box,
-    .search-filters {
-        overflow: visible !important;
-        position: relative !important;
-        z-index: 1 !important;
-    }
-    
-    /* 确保 select 元素不会被父容器截断 */
-    .search-select {
-        overflow: visible !important;
-        position: relative !important;
-        z-index: 100 !important;
-        -webkit-appearance: menulist !important;
-        appearance: menulist !important;
-        clip: auto !important;
-    }
-    
-    /* 2. 解决搜索栏按钮遮挡输入框 */
-    .search-box {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 10px !important;
-        padding: 12px !important;
-    }
-    
-    .search-filters {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-        width: 100% !important;
-    }
-    
-    .search-select {
-        width: 100% !important;
-        height: 44px !important;
-        font-size: 14px !important;
-        padding: 8px 30px 8px 12px !important;
-        border: 1px solid #ddd !important;
-        border-radius: 8px !important;
-        background: #fff !important;
-    }
-    
-    .search-btn {
-        width: 100% !important;
-        height: 44px !important;
-        font-size: 15px !important;
-        font-weight: 600 !important;
-        border-radius: 8px !important;
-        margin-top: 0 !important;
-    }
-    
-    /* 3. 筛选器区域同样的修复 */
-    .filter-bar {
-        overflow: visible !important;
-        position: relative !important;
-    }
-    
-    .filter-group select {
-        overflow: visible !important;
-        position: relative !important;
-        z-index: 100 !important;
     }
 }
