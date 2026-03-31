@@ -6702,9 +6702,16 @@ input, textarea, select {
         order: -1 !important;
     }
     
-    /* 网格优化 */
+    /* 网格优化 - 卡片靠左 */
     .cards-grid {
-        gap: 12px !important;
-        padding: 0 10px !important;
+        gap: 10px !important;
+        padding: 0 0 !important;
+        margin: 0 -10px !important;
+    }
+    
+    .card {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        border-radius: 0 !important;
     }
 }
