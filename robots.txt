@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zengliny.github.io/guangxi-travel/sitemap.xml
