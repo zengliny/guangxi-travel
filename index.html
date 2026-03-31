@@ -967,10 +967,22 @@
         }
 
         // 渲染卡片
-        function renderCards(items, section) {
+        // 分页配置
+        const ITEMS_PER_PAGE = 6;
+        const pageState = {};
+        
+        function renderCards(items, section, page = 1) {
             if (!items || items.length === 0) return '<p class="text-muted">暂无内容</p>';
             
-            return items.map(item => {
+            // 保存总数量
+            pageState[section.id] = { total: items.length, currentPage: page };
+            
+            // 分页 slice
+            const start = (page - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const pageItems = items.slice(start, end);
+            
+            let html = pageItems.map(item => {
                 const tags = item.tags ? item.tags.map(tag => `<span class="tag" onclick="showTagInfo('${tag}')">${tag}</span>`).join('') : '';
                 const price = item.price || item.priceRange || '';
                 const features = item.features || item.service || [];
@@ -1000,6 +1012,38 @@
                     </div>
                 `;
             }).join('');
+            
+            // 添加分页按钮
+            const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE);
+            if (totalPages > 1) {
+                let paginationHtml = '<div class="pagination">';
+                
+                if (page > 1) {
+                    paginationHtml += `<button class="pagination-btn" onclick="loadPage('${section.id}', ${page - 1})">上一页</button>`;
+                }
+                
+                paginationHtml += `<span class="pagination-info">${page} / ${totalPages}</span>`;
+                
+                if (page < totalPages) {
+                    paginationHtml += `<button class="pagination-btn" onclick="loadPage('${section.id}', ${page + 1})">下一页</button>`;
+                }
+                
+                paginationHtml += '</div>';
+                html += paginationHtml;
+            }
+            
+            return html;
+        }
+
+        // 加载分页
+        function loadPage(sectionId, page) {
+            const content = CONTENT[sectionId];
+            if (!content) return;
+            
+            const sectionEl = document.querySelector(`[data-section="${sectionId}"] .cards-grid`);
+            if (sectionEl) {
+                sectionEl.innerHTML = renderCards(content.items, content, page);
+            }
         }
 
         // SEO 更新
