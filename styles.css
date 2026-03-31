@@ -5962,3 +5962,76 @@ input, textarea, select {
         transform: translate(-50%, -50%) !important;
     }
 }
+
+/* ============================================
+   终极修复方案：简单可靠
+   ============================================ */
+
+/* 移动端：移除所有复杂的弹窗，使用最简单的 alert 兼容 */
+@media (max-width: 768px) {
+    /* 搜索区域 - 干净简洁 */
+    .search-section {
+        padding: 10px !important;
+        margin: 10px !important;
+        background: #fff !important;
+    }
+    
+    .search-box {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        background: #f8f8f8 !important;
+        border-radius: 10px !important;
+        padding: 12px !important;
+    }
+    
+    /* 确保 select 可以点击 */
+    .search-select {
+        width: 100% !important;
+        height: 45px !important;
+        font-size: 14px !important;
+        padding: 8px !important;
+        border: 1px solid #ddd !important;
+        border-radius: 6px !important;
+        background: #fff !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        -webkit-appearance: listbox !important;
+        appearance: listbox !important;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .search-btn {
+        width: 100% !important;
+        height: 45px !important;
+        font-size: 15px !important;
+        background: #e67e22 !important;
+        color: #fff !important;
+        border-radius: 6px !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    
+    /* 快速搜索标签 */
+    .search-tags {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        padding: 8px !important;
+    }
+    
+    /* 卡片标签 - 确保不遮挡 */
+    .card-tags {
+        position: absolute !important;
+        top: 5px !important;
+        right: 5px !important;
+        max-width: 50% !important;
+    }
+    
+    .card-tags .tag {
+        font-size: 9px !important;
+        padding: 2px 4px !important;
+    }
+}
