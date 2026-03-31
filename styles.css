@@ -5740,3 +5740,118 @@ input, textarea, select {
         margin-top: 8px;
     }
 }
+
+/* ============================================
+   移动端问题彻底修复
+   ============================================ */
+
+/* 1. 搜索框区域 - 确保可以点击 */
+@media (max-width: 768px) {
+    /* 搜索区域容器 */
+    .search-section {
+        position: relative !important;
+        z-index: 1000 !important;
+        padding: 15px 10px !important;
+        background: #fff !important;
+    }
+    
+    /* 搜索框 */
+    .search-box {
+        position: relative !important;
+        z-index: 1001 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding: 15px !important;
+        background: #f5f5f5 !important;
+        border-radius: 10px !important;
+    }
+    
+    /* 搜索筛选容器 */
+    .search-filters {
+        position: relative !important;
+        z-index: 1002 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+    
+    /* 下拉选择框 - 关键：确保可点击 */
+    .search-select {
+        position: relative !important;
+        z-index: 1003 !important;
+        width: 100% !important;
+        height: 48px !important;
+        padding: 10px 15px !important;
+        font-size: 15px !important;
+        border: 1px solid #ddd !important;
+        border-radius: 8px !important;
+        background: #fff !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        -webkit-appearance: listbox !important;
+        appearance: listbox !important;
+        touch-action: manipulation !important;
+    }
+    
+    /* 搜索按钮 */
+    .search-btn {
+        position: relative !important;
+        z-index: 1003 !important;
+        width: 100% !important;
+        height: 48px !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        background: linear-gradient(135deg, #e67e22, #d35400) !important;
+        color: #fff !important;
+        border: none !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+    }
+    
+    /* 快速搜索标签 */
+    .search-tags {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        padding: 10px 5px !important;
+        justify-content: center !important;
+    }
+    
+    .search-tag {
+        padding: 8px 15px !important;
+        font-size: 13px !important;
+        background: #fff !important;
+        border: 1px solid #e67e22 !important;
+        color: #e67e22 !important;
+        border-radius: 20px !important;
+        cursor: pointer !important;
+    }
+    
+    /* 2. 卡片标签 - 确保可以点击且弹窗正常 */
+    .card-tags {
+        position: absolute !important;
+        top: 8px !important;
+        right: 8px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 4px !important;
+        max-width: 55% !important;
+    }
+    
+    .card-tags .tag, .card-tag {
+        position: relative !important;
+        z-index: 100 !important;
+        display: inline-block !important;
+        padding: 3px 8px !important;
+        font-size: 10px !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        white-space: nowrap !important;
+    }
+}
+
