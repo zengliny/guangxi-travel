@@ -7,7 +7,7 @@
 function initSearch() {
     // 创建搜索框 HTML
     const searchHTML = `
-        <div class="search-container">
+        <div class="search-container" id="searchContainer">
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="搜索民宿、景点、房源..." autocomplete="off">
                 <button id="searchBtn" class="search-btn">搜索</button>
@@ -16,20 +16,40 @@ function initSearch() {
         </div>
     `;
     
-    // 插入到导航栏
-    const navLinks = document.getElementById('navLinks');
-    if (navLinks) {
-        navLinks.insertAdjacentHTML('beforebegin', searchHTML);
+    // 插入到 header 容器内的 nav-container 后面，确保在移动端能正确显示
+    const navContainer = document.querySelector('.nav-container');
+    if (navContainer) {
+        navContainer.insertAdjacentHTML('afterend', searchHTML);
     }
     
-    // 绑定事件
-    document.getElementById('searchInput').addEventListener('input', debounce(handleSearch, 300));
-    document.getElementById('searchBtn').addEventListener('click', doSearch);
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-container')) {
-            document.getElementById('searchResults').style.display = 'none';
+    // 等待 DOM 更新后绑定事件
+    setTimeout(() => {
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+            // 确保 input 可以获得焦点
+            searchInput.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            searchInput.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+            });
         }
-    });
+        
+        if (searchBtn) {
+            searchBtn.addEventListener('click', doSearch);
+        }
+        
+        // 点击其他地方关闭搜索结果
+        document.addEventListener('click', (e) => {
+            const searchResults = document.getElementById('searchResults');
+            if (searchResults && !e.target.closest('.search-container')) {
+                searchResults.style.display = 'none';
+            }
+        });
+    }, 100);
 }
 
 // 防抖
