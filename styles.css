@@ -6146,16 +6146,6 @@ input, textarea, select {
         margin: 0 !important;
     }
     
-    /* ===== 所有弹窗都禁用，使用 alert ===== */
-    .modal, 
-    .modal-content, 
-    .popup, 
-    .tip,
-    [class*="modal"],
-    [class*="popup"],
-    [style*="fixed"][style*="z-index"] {
-        display: none !important;
-    }
 }
 
 /* ============================================
