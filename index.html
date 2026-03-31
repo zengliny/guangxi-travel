@@ -1102,8 +1102,46 @@ function showTagInfo(tag) {
         "夜市": "🌙 晚上最热闹的地方"
     };
     const info = tagInfo[tag] || "点击查看更多关于 " + tag + " 的信息";
-    alert(info);
+    // 使用自定义弹窗替代 alert
+    showCustomModal(tag, info);
 }
 </script>
+
+<script>
+// 自定义弹窗函数
+function showCustomModal(tag, info) {
+    const modal = document.getElementById('tagModal');
+    const modalText = document.getElementById('tagModalText');
+    const modalIcon = document.getElementById('tagModalIcon');
+    
+    if (modal && modalText) {
+        // 提取 emoji 和文字
+        const match = info.match(/^(\S+)\s+(.+)$/);
+        if (match) {
+            modalIcon.textContent = match[1];
+            modalText.textContent = match[2];
+        } else {
+            modalIcon.textContent = '🏷️';
+            modalText.textContent = info;
+        }
+        modal.classList.add('active');
+    }
+}
+
+function closeTagModal() {
+    const modal = document.getElementById('tagModal');
+    if (modal) modal.classList.remove('active');
+}
+</script>
+
+<!-- 标签信息弹窗 -->
+<div id="tagModal" class="tag-modal" onclick="closeTagModal()">
+    <div class="tag-modal-content" onclick="event.stopPropagation()">
+        <div id="tagModalIcon" class="tag-modal-icon">🏷️</div>
+        <p id="tagModalText" class="tag-modal-text"></p>
+        <button class="tag-modal-close" onclick="closeTagModal()">知道了</button>
+    </div>
+</div>
+
 </body>
 </html>
