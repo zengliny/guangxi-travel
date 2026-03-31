@@ -1435,6 +1435,38 @@ body {
     z-index: 2;
 }
 
+/* 景点实用提示 */
+.card-tips {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #e65100;
+    margin-top: 10px;
+    border-left: 3px solid #ff9800;
+}
+
+/* 游玩季节 */
+.card-season {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #eee;
+}
+
+/* 住客真实反馈 */
+.card-review {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #2e7d32;
+    margin-top: 10px;
+    border-left: 3px solid #4caf50;
+    font-style: italic;
+}
+
 /* 卡片内容 */
 .card-content {
     padding: 20px;

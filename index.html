@@ -734,6 +734,12 @@
                 const featureHTML = features.length > 0 
                     ? `<div class="card-features">${features.map(f => `<span>✓ ${f}</span>`).join('')}</div>` 
                     : '';
+                // 显示实用tips
+                const tips = item.tips ? `<div class="card-tips">💡 ${item.tips}</div>` : '';
+                // 显示真实住客反馈
+                const review = item.review ? `<div class="card-review">📣 ${item.review}</div>` : '';
+                // 显示游玩时间/季节
+                const season = item.season ? `<div class="card-season">📅 ${item.season}</div>` : '';
                 
                 return `
                     <div class="card" data-item-id="${item.id}">
@@ -743,6 +749,9 @@
                             <p>${item.description}</p>
                             <div class="card-tags">${tags}</div>
                             ${price ? `<div class="card-price">${price}</div>` : ''}
+                            ${tips}
+                            ${review}
+                            ${season}
                             ${featureHTML}
                         </div>
                     </div>
