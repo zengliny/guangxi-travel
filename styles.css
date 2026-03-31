@@ -867,7 +867,8 @@ body {
     background: transparent;
     padding: 8px 10px;
     font-size: 14px;
-    width: 180px;
+    flex: 1;
+    min-width: 100px;
     outline: none;
     font-family: 'Noto Sans SC', sans-serif;
 }
@@ -881,8 +882,9 @@ body {
     border: none;
     cursor: pointer;
     font-size: 16px;
-    padding: 5px;
+    padding: 8px 12px;
     transition: transform 0.2s;
+    white-space: nowrap;
 }
 
 .search-btn:hover {
@@ -1088,23 +1090,25 @@ body {
         gap: 8px;
         margin: 10px;
         min-height: auto;
-    }
-    
-    .filter-title {
-        font-size: 12px;
-        margin-right: 6px;
-        display: none;
+        overflow: visible !important;
+        position: relative !important;
+        z-index: 1 !important;
     }
     
     .filter-group {
         flex: 1 1 auto;
         min-width: calc(50% - 4px);
         gap: 4px;
+        overflow: visible !important;
     }
     
     .filter-group label {
         font-size: 11px;
         display: none;
+    }
+    
+    .filter-group select {
+        overflow: visible !important;
     }
     
     .filter-group select {
@@ -5795,6 +5799,21 @@ input, textarea, select {
         -webkit-appearance: listbox !important;
         appearance: listbox !important;
         touch-action: manipulation !important;
+        overflow: visible !important;
+        transform: none !important;
+    }
+    
+    /* 修复 select 下拉弹窗被截断的问题 */
+    .search-filters {
+        overflow: visible !important;
+        transform: none !important;
+    }
+    
+    /* 确保卡片不限制下拉框 */
+    .property-card,
+    .card-tags,
+    .search-result-header {
+        overflow: visible !important;
     }
     
     /* 搜索按钮 */
@@ -6160,15 +6179,21 @@ input, textarea, select {
         flex-wrap: wrap !important;
         gap: 6px !important;
         padding: 6px !important;
+        overflow: visible !important;
+        position: relative !important;
+        z-index: auto !important;
     }
     
     .filter-group {
         flex: 1 1 30% !important;
+        overflow: visible !important;
     }
     
     .filter-group select {
         height: 32px !important;
         font-size: 11px !important;
+        overflow: visible !important;
+        transform: none !important;
     }
     
     /* ===== 卡片和标签 ===== */
