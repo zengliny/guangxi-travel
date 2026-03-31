@@ -5566,3 +5566,114 @@ input, textarea, select {
         padding: 20px !important;
     }
 }
+
+/* 移动端彻底修复 */
+@media (max-width: 768px) {
+    /* 搜索框区域 - 核心修复 */
+    .search-section {
+        padding: 8px !important;
+        margin: 8px !important;
+        background: #fff !important;
+    }
+    
+    .search-box {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        padding: 10px !important;
+        background: #f5f5f5 !important;
+        border-radius: 8px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .search-filters {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+    
+    /* 搜索下拉框 - 确保可以点击 */
+    .search-select {
+        width: 100% !important;
+        height: 42px !important;
+        padding: 8px !important;
+        font-size: 14px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 6px !important;
+        background: #fff !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        -webkit-appearance: listbox !important;
+        appearance: listbox !important;
+    }
+    
+    .search-btn {
+        width: 100% !important;
+        height: 42px !important;
+        font-size: 15px !important;
+    }
+    
+    .search-tags {
+        padding: 8px !important;
+        flex-wrap: wrap !important;
+    }
+    
+    /* 卡片标签弹窗 - 居中完整显示 */
+    .card-tags {
+        position: absolute !important;
+        top: 5px !important;
+        right: 5px !important;
+        z-index: 50 !important;
+    }
+    
+    .card-tag {
+        display: inline-block !important;
+        padding: 2px 5px !important;
+        font-size: 9px !important;
+        border-radius: 3px !important;
+        cursor: pointer !important;
+    }
+    
+    /* 标签点击弹窗 - 居中且完整 */
+    .modal {
+        display: none !important;
+        position: fixed !important;
+        z-index: 99999 !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(0,0,0,0.6) !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: auto !important;
+    }
+    
+    .modal.active {
+        display: flex !important;
+    }
+    
+    .modal-content {
+        width: 85% !important;
+        max-width: 350px !important;
+        max-height: 70vh !important;
+        margin: auto !important;
+        padding: 15px !important;
+        border-radius: 10px !important;
+        background: #fff !important;
+        overflow-y: auto !important;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
+    }
+    
+    /* 确保弹窗内容可以滚动 */
+    .modal-body {
+        max-height: 50vh !important;
+        overflow-y: auto !important;
+        padding: 10px 0 !important;
+    }
+}
