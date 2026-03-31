@@ -819,7 +819,7 @@
             if (!items || items.length === 0) return '<p class="text-muted">暂无内容</p>';
             
             return items.map(item => {
-                const tags = item.tags ? item.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
+                const tags = item.tags ? item.tags.map(tag => `<span class="tag" onclick="showTagInfo('${tag}')">${tag}</span>`).join('') : '';
                 const price = item.price || item.priceRange || '';
                 const features = item.features || item.service || [];
                 const featureHTML = features.length > 0 
@@ -1084,5 +1084,26 @@
             <span class="anchor-text">咨询</span>
         </a>
     </nav>
+
+<script>
+// 显示标签信息弹窗
+function showTagInfo(tag) {
+    const tagInfo = {
+        "必去": "🏝️ 这是本地人强烈推荐的目的地，错过会后悔！",
+        "推荐": "⭐ 口碑很好的选择，值得一去",
+        "打卡": "📸 网红景点，拍照超级出片",
+        "经典": "🏛️ 最经典的玩法，第一次去必选",
+        "日出": "🌅 看日出的绝佳位置，建议早起",
+        "日落": "🌄 看日落的绝佳位置，不要错过",
+        "山水甲天下": "🏞️ 桂林山水甲天下，名不虚传",
+        "免费": "🆓 免费景点",
+        "亲子": "👨‍👩‍👧‍👦 非常适合带孩子一起玩",
+        "美食": "🍜 美食聚集地，吃货的天堂",
+        "夜市": "🌙 晚上最热闹的地方"
+    };
+    const info = tagInfo[tag] || "点击查看更多关于 " + tag + " 的信息";
+    alert(info);
+}
+</script>
 </body>
 </html>
