@@ -6715,3 +6715,21 @@ input, textarea, select {
         border-radius: 0 !important;
     }
 }
+
+/* 移动端弹窗内容靠左 */
+@media (max-width: 768px) {
+    .modal-content,
+    .tag-modal-content,
+    .contact-form-content,
+    .wechat-qr-modal {
+        margin: 0 !important;
+        padding: 15px !important;
+        width: 90% !important;
+        max-width: 90% !important;
+        border-radius: 12px 12px 0 0 !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+}
