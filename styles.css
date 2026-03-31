@@ -5310,3 +5310,59 @@ input, textarea, select {
         transform: scale(0.98);
     }
 }
+
+/* 低价引流标签 */
+.price-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 10;
+    animation: pulse 2s infinite;
+}
+
+.price-tag.bargin {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.price-tag.beihai {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* 北海推荐标签 */
+.beihai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+/* 民宿卡片低价标识 */
+.homestay-price {
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.homestay-price .original {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin-left: 8px;
+}
