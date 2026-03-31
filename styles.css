@@ -6747,747 +6747,16 @@ input, textarea, select {
 }
 
 /* =====================================================
-
-/* =====================================================
-   移动端弹窗统一修复 v3 - 极简方案
-   核心原则：简单、可靠、可维护
+   移动端弹窗居中修复 - 基于正常版本cb57950
    ===================================================== */
 
 @media (max-width: 768px) {
     
-    /* ===== 弹窗遮罩层 ===== */
-    .modal,
-    .booking-modal,
-    .property-modal,
-    .contact-form-modal,
-    .qr-modal,
-    .tag-modal,
-    .wechat-qr-modal {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: 999999 !important;
-        background: rgba(0, 0, 0, 0.75) !important;
-        display: none !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 15px !important;
-        box-sizing: border-box !important;
-        overflow: auto !important;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    /* 激活显示 */
-    .modal.active,
-    .booking-modal.active,
-    .property-modal.active,
-    .contact-form-modal.active,
-    .qr-modal.active,
-    .tag-modal.active,
-    .wechat-qr-modal.active {
-        display: flex !important;
-    }
-    
-    /* ===== 弹窗内容区 ===== */
-    .modal-content,
-    .booking-modal-content,
-    .property-modal-content,
-    .contact-form-content,
-    .qr-modal .modal-content,
-    .tag-modal-content,
-    .wechat-qr-modal .modal-content {
-        position: relative !important;
-        width: 92% !important;
-        max-width: 340px !important;
-        max-height: 80vh !important;
-        margin: auto !important;
-        padding: 20px !important;
-        border-radius: 16px !important;
-        background: #fff !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch;
-        box-shadow: 0 15px 50px rgba(0,0,0,0.4) !important;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-    }
-    
-    /* ===== 关闭按钮 ===== */
-    .modal-close,
-    .booking-modal-close,
-    .property-modal-close,
-    .contact-form-close,
-    .qr-modal .modal-close,
-    .tag-modal-close,
-    .wechat-qr-modal .modal-close {
-        position: absolute !important;
-        top: 12px !important;
-        right: 12px !important;
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 22px !important;
-        line-height: 30px !important;
-        text-align: center !important;
-        color: #666 !important;
-        background: #f5f5f5 !important;
-        border-radius: 50% !important;
-        cursor: pointer !important;
-        z-index: 1000000 !important;
-        border: none !important;
-        touch-action: manipulation !important;
-    }
-    
-    /* ===== 悬浮按钮 ===== */
-    .booking-fab,
-    .floating-btn,
-    .fixed-call-btn {
-        position: fixed !important;
-        bottom: 100px !important;
-        right: 20px !important;
-        z-index: 999998 !important;
-        padding: 16px 24px !important;
-        font-size: 15px !important;
-        font-weight: 600 !important;
-        color: #fff !important;
-        background: linear-gradient(135deg, #00a86b, #00c853) !important;
-        border: none !important;
-        border-radius: 30px !important;
-        box-shadow: 0 8px 25px rgba(0,168,107,0.5) !important;
-        cursor: pointer !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent;
-    }
-    
-    /* 返回顶部 */
-    .back-to-top,
-    .floating-top {
-        position: fixed !important;
-        bottom: 30px !important;
-        right: 20px !important;
-        z-index: 999997 !important;
-    }
-    
-    /* ===== 阻止背景滚动 ===== */
-    body.modal-open,
-    body.booking-modal-open,
-    body.property-modal-open,
-    body.contact-form-open {
-        overflow: hidden !important;
-        position: fixed !important;
-        width: 100% !important;
-        height: 100% !important;
-    }
-    
-    /* ===== 卡片点击 ===== */
-    .card {
-        cursor: pointer !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: rgba(0,168,107,0.15);
-    }
-    
-    /* ===== 标签点击 ===== */
-    .card-tags {
-        position: absolute !important;
-        top: 10px !important;
-        right: 10px !important;
-        z-index: 50 !important;
-    }
-    
-    .card-tag {
-        pointer-events: auto !important;
-        cursor: pointer !important;
-        touch-action: manipulation !important;
-    }
-    
-    /* ===== 搜索框 ===== */
-    .search-section,
-    .search-box {
-        position: relative !important;
-        z-index: 10000 !important;
-    }
-}
-
-/* =====================================================
-   移动端弹窗和悬浮按钮修复 v4 - 居中+可点击
-   ===================================================== */
-
-@media (max-width: 768px) {
-    
-    /* ===== 弹窗遮罩 - 强制居中 ===== */
-    .modal,
-    .booking-modal,
-    .property-modal,
-    .contact-form-modal,
-    .qr-modal,
-    .tag-modal,
-    .wechat-qr-modal,
-    #wechatQRModal,
-    #tagModal,
-    #propertyModal,
-    #bookingModal {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 9999999 !important;
-        background: rgba(0, 0, 0, 0.8) !important;
-        display: none !important;
-        align-items: center !important;
-        justify-content: center !important;
-        overflow: hidden !important;
-    }
-    
-    .modal.active,
-    .booking-modal.active,
-    .property-modal.active,
-    .contact-form-modal.active,
-    .qr-modal.active,
-    .tag-modal.active,
-    .wechat-qr-modal.active,
-    #wechatQRModal.active,
-    #tagModal.active,
-    #propertyModal.active,
-    #bookingModal.active {
-        display: flex !important;
-    }
-    
-    /* ===== 弹窗内容 - 强制居中 ===== */
-    .modal-content,
-    .booking-modal-content,
-    .property-modal-content,
-    .contact-form-content,
-    .qr-modal .modal-content,
-    .tag-modal-content,
-    .wechat-qr-modal .modal-content,
-    #wechatQRModal .modal-content,
-    #tagModal .modal-content,
-    #propertyModal .modal-content,
-    #bookingModal .modal-content {
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        -webkit-transform: translate(-50%, -50%) !important;
-        width: 88% !important;
-        max-width: 320px !important;
-        max-height: 75vh !important;
-        margin: 0 !important;
-        padding: 20px !important;
-        border-radius: 16px !important;
-        background: #fff !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important;
-    }
-    
-    /* ===== 关闭按钮 ===== */
-    .modal-close,
-    .booking-modal-close,
-    .property-modal-close,
-    .contact-form-close,
-    .qr-modal .modal-close,
-    .tag-modal-close,
-    .wechat-qr-modal .modal-close,
-    #wechatQRModal .modal-close,
-    #tagModal .modal-close,
-    #propertyModal .modal-close,
-    #bookingModal .modal-close {
-        position: absolute !important;
-        top: 10px !important;
-        right: 10px !important;
-        width: 36px !important;
-        height: 36px !important;
-        font-size: 24px !important;
-        line-height: 34px !important;
-        text-align: center !important;
-        color: #555 !important;
-        background: #eee !important;
-        border-radius: 50% !important;
-        cursor: pointer !important;
-        z-index: 10000000 !important;
-        border: none !important;
-        touch-action: manipulation !important;
-    }
-    
-    /* ===== 悬浮按钮 - 增大点击区域 ===== */
-    .floating-contact,
-    .floating-btn,
-    .booking-fab,
-    .fixed-call-btn {
-        position: fixed !important;
-        bottom: 120px !important;
-        right: 18px !important;
-        z-index: 9999998 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-    }
-    
-    .floating-btn,
-    .floating-booking,
-    .floating-phone,
-    .floating-wechat,
-    .floating-top,
-    .booking-fab {
-        position: relative !important;
-        width: 56px !important;
-        height: 56px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 50% !important;
-        cursor: pointer !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
-    }
-    
-    .floating-booking,
-    .booking-fab {
-        width: auto !important;
-        height: auto !important;
-        padding: 14px 22px !important;
-        border-radius: 28px !important;
-        font-size: 14px !important;
-        font-weight: 600 !important;
-        background: linear-gradient(135deg, #00a86b, #00c853) !important;
-        color: #fff !important;
-    }
-    
-    /* ===== 背景滚动锁定 ===== */
-    body.modal-open,
-    body.booking-modal-open,
-    body.contact-form-open,
-    body.wechat-modal-open {
-        overflow: hidden !important;
-        position: fixed !important;
-        width: 100% !important;
-        height: 100% !important;
-        touch-action: none !important;
-    }
-    
-    /* ===== 卡片点击 ===== */
-    .card {
-        cursor: pointer !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: rgba(0,168,107,0.2) !important;
-    }
-    
-    /* ===== 标签弹窗 ===== */
-    .card-tags {
-        position: absolute !important;
-        top: 8px !important;
-        right: 8px !important;
-        z-index: 100 !important;
-    }
-    
-    .card-tag {
-        display: inline-block !important;
-        padding: 4px 10px !important;
-        font-size: 11px !important;
-        background: rgba(0,168,107,0.95) !important;
-        color: #fff !important;
-        border-radius: 12px !important;
-        cursor: pointer !important;
-        pointer-events: auto !important;
-        touch-action: manipulation !important;
-    }
-    
-    /* ===== 搜索框不被遮挡 ===== */
-    .search-section {
-        position: relative !important;
-        z-index: 99999 !important;
-    }
-    
-    .search-box {
-        position: relative !important;
-        z-index: 99999 !important;
-    }
-}
-
-/* =====================================================
-   移动端联系区域优化 v5 - 缩小地图+突出微信
-   ===================================================== */
-
-@media (max-width: 768px) {
-    
-    /* ===== 缩小地图区域 ===== */
-    .contact-section {
-        padding: 20px 12px 40px 12px !important;
-    }
-    
-    .map-container {
-        margin-bottom: 15px !important;
-        padding: 12px !important;
-    }
-    
-    .map-placeholder {
-        padding: 15px !important;
-        min-height: 80px !important;
-    }
-    
-    .map-icon {
-        font-size: 2rem !important;
-        margin-bottom: 5px !important;
-    }
-    
-    .map-placeholder h3 {
-        font-size: 1rem !important;
-        margin: 5px 0 !important;
-    }
-    
-    .map-placeholder p {
-        font-size: 0.85rem !important;
-        margin: 5px 0 !important;
-    }
-    
-    .map-link {
-        padding: 8px 15px !important;
-        font-size: 13px !important;
-    }
-    
-    /* ===== 突出微信咨询按钮 ===== */
-    .contact-form-modal {
-        z-index: 9999999 !important;
-    }
-    
-    .cta-btn {
-        padding: 14px 20px !important;
-        font-size: 15px !important;
-        margin: 8px 0 !important;
-    }
-    
-    .cta-wechat {
-        background: linear-gradient(135deg, #07c160 0%, #00d46a 100%) !important;
-        font-weight: 600 !important;
-        box-shadow: 0 4px 15px rgba(7, 193, 96, 0.4) !important;
-    }
-    
-    .cta-btn.cta-wechat {
-        display: block !important;
-        width: 100% !important;
-    }
-    
-    /* ===== 联系表单弹窗优化 ===== */
-    .contact-form-modal.active {
-        display: flex !important;
-    }
-    
-    .contact-form-content {
-        width: 92% !important;
-        max-width: 340px !important;
-        padding: 20px !important;
-        border-radius: 16px !important;
-    }
-    
-    /* ===== 微信二维码弹窗居中 ===== */
-    #wechatQRModal,
-    #wechatModal,
-    #contactFormModal {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 99999999 !important;
-        display: none !important;
-        align-items: center !important;
-        justify-content: center !important;
-        background: rgba(0,0,0,0.8) !important;
-    }
-    
-    #wechatQRModal.active,
-    #wechatModal.active,
-    #contactFormModal.active {
-        display: flex !important;
-    }
-    
-    #wechatQRModal .modal-content,
-    #wechatModal .modal-content,
-    #contactFormModal .modal-content {
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        -webkit-transform: translate(-50%, -50%) !important;
-        width: 85% !important;
-        max-width: 300px !important;
-        padding: 20px !important;
-        border-radius: 16px !important;
-    }
-}
-
-/* =====================================================
-   移动端卡片详情弹窗彻底修复 v6 - 完整显示
-   ===================================================== */
-
-@media (max-width: 768px) {
-    
-    /* ===== 所有弹窗通用 - 强制最高层级+完整显示 ===== */
-    .property-modal,
-    #propertyModal,
-    .modal,
-    .booking-modal,
-    .contact-form-modal {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: 999999999 !important;
-        background: rgba(0, 0, 0, 0.85) !important;
-        display: none !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 10px !important;
-        box-sizing: border-box !important;
-        overflow: auto !important;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .property-modal.active,
-    #propertyModal.active,
-    .modal.active,
-    .booking-modal.active,
-    .contact-form-modal.active {
-        display: flex !important;
-    }
-    
-    /* ===== 弹窗内容 - 居中+完整显示 ===== */
-    .property-modal-content,
-    #propertyModal .modal-content,
-    .modal-content,
-    .booking-modal-content,
-    .contact-form-content {
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        -webkit-transform: translate(-50%, -50%) !important;
-        width: 92% !important;
-        max-width: 340px !important;
-        max-height: 85vh !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-radius: 16px !important;
-        background: #fff !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important;
-    }
-    
-    /* ===== 弹窗内部结构 ===== */
-    .property-modal-header,
-    .modal-header {
-        position: sticky !important;
-        top: 0 !important;
-        background: #fff !important;
-        padding: 16px 20px !important;
-        border-bottom: 1px solid #eee !important;
-        z-index: 10 !important;
-    }
-    
-    .property-modal-header h3,
-    .modal-header h3 {
-        font-size: 1.1rem !important;
-        margin: 0 !important;
-        padding-right: 30px !important;
-    }
-    
-    .property-modal-body,
-    .modal-body {
-        padding: 16px 20px 30px 20px !important;
-        max-height: calc(85vh - 60px) !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-    }
-    
-    /* ===== 关闭按钮 - 固定右上角 ===== */
-    .property-modal-close,
-    .modal-close,
-    .booking-modal-close,
-    .contact-form-close {
-        position: absolute !important;
-        top: 12px !important;
-        right: 12px !important;
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 24px !important;
-        line-height: 30px !important;
-        text-align: center !important;
-        color: #666 !important;
-        background: #f0f0f0 !important;
-        border-radius: 50% !important;
-        cursor: pointer !important;
-        z-index: 100 !important;
-        border: none !important;
-        touch-action: manipulation !important;
-    }
-    
-    /* ===== 卡片点击区域 ===== */
-    .card {
-        cursor: pointer !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: rgba(0,168,107,0.2) !important;
-    }
-    
-    .card:active {
-        transform: scale(0.98) !important;
-    }
-    
-    /* ===== 禁用背景滚动 ===== */
-    body.modal-open,
-    body.property-modal-open,
-    body.booking-modal-open {
-        overflow: hidden !important;
-        position: fixed !important;
-        width: 100% !important;
-        height: 100% !important;
-        touch-action: none !important;
-    }
-}
-
-/* =====================================================
-   移动端弹窗 v7 - 底部弹出+适应屏幕高度
-   ===================================================== */
-
-@media (max-width: 768px) {
-    
-    /* ===== 弹窗从底部弹出 ===== */
-    .property-modal,
-    #propertyModal,
-    .modal,
-    .booking-modal,
-    .contact-form-modal {
-        position: fixed !important;
-        top: auto !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100% !important;
-        height: auto !important;
-        max-height: 90vh !important;
-        z-index: 999999999 !important;
-        background: rgba(0, 0, 0, 0.6) !important;
-        display: none !important;
-        align-items: flex-end !important;
-        justify-content: center !important;
-        padding: 0 !important;
-        border-radius: 20px 20px 0 0 !important;
-        overflow: hidden !important;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .property-modal.active,
-    #propertyModal.active,
-    .modal.active,
-    .booking-modal.active,
-    .contact-form-modal.active {
-        display: flex !important;
-    }
-    
-    /* ===== 弹窗内容 - 底部弹出+自动高度 ===== */
-    .property-modal-content,
-    #propertyModal .modal-content,
-    .modal-content,
-    .booking-modal-content,
-    .contact-form-content {
-        width: 100% !important;
-        max-width: 100% !important;
-        max-height: 88vh !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-radius: 20px 20px 0 0 !important;
-        background: #fff !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        transform: translateY(100%) !important;
-        transition: transform 0.3s ease-out !important;
-    }
-    
-    .property-modal.active .property-modal-content,
-    #propertyModal.active .modal-content,
-    .modal.active .modal-content,
-    .booking-modal.active .booking-modal-content,
-    .contact-form-modal.active .contact-form-content {
-        transform: translateY(0) !important;
-    }
-    
-    /* ===== 弹窗内部结构 ===== */
-    .property-modal-header,
-    .modal-header {
-        position: sticky !important;
-        top: 0 !important;
-        background: #fff !important;
-        padding: 16px 20px !important;
-        border-bottom: 1px solid #eee !important;
-        z-index: 10 !important;
-        border-radius: 20px 20px 0 0 !important;
-    }
-    
-    .property-modal-header h3,
-    .modal-header h3 {
-        font-size: 1.1rem !important;
-        margin: 0 !important;
-        padding-right: 40px !important;
-    }
-    
-    .property-modal-body,
-    .modal-body {
-        padding: 16px 20px 40px 20px !important;
-        max-height: calc(88vh - 60px) !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-    }
-    
-    /* ===== 关闭按钮 ===== */
-    .property-modal-close,
-    .modal-close,
-    .booking-modal-close,
-    .contact-form-close {
-        position: absolute !important;
-        top: 14px !important;
-        right: 14px !important;
-        width: 28px !important;
-        height: 28px !important;
-        font-size: 22px !important;
-        line-height: 26px !important;
-        text-align: center !important;
-        color: #888 !important;
-        background: #f5f5f5 !important;
-        border-radius: 50% !important;
-        cursor: pointer !important;
-        z-index: 20 !important;
-        border: none !important;
-    }
-    
-    /* ===== 背景滚动锁定 ===== */
-    body.modal-open,
-    body.property-modal-open {
-        overflow: hidden !important;
-    }
-}
-
-/* =====================================================
-   移动端弹窗 v8 - 居中适应屏幕
-   ===================================================== */
-
-@media (max-width: 768px) {
-    
-    /* ===== 弹窗遮罩 - 居中布局 ===== */
-    .property-modal,
-    #propertyModal,
-    .modal,
+    /* ===== 居中弹窗 ===== */
     .booking-modal,
     .contact-form-modal,
+    .property-modal,
+    .modal,
     #wechatModal,
     #wechatQRModal,
     #contactFormModal {
@@ -7498,100 +6767,88 @@ input, textarea, select {
         bottom: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        z-index: 999999999 !important;
-        background: rgba(0, 0, 0, 0.75) !important;
+        z-index: 99999 !important;
+        background: rgba(0, 0, 0, 0.7) !important;
         display: none !important;
         align-items: center !important;
         justify-content: center !important;
         padding: 15px !important;
         box-sizing: border-box !important;
-        overflow: auto !important;
-        -webkit-overflow-scrolling: touch;
     }
     
-    .property-modal.active,
-    #propertyModal.active,
-    .modal.active,
     .booking-modal.active,
     .contact-form-modal.active,
-    #wechatModal.active,
+    .property-modal.active,
+    .modal.active,
     #wechatModal[style*="flex"],
     #contactFormModal.active {
         display: flex !important;
     }
     
-    /* ===== 弹窗内容 - 居中+适应屏幕 ===== */
-    .property-modal-content,
-    #propertyModal .modal-content,
-    .modal-content,
+    /* ===== 内容区居中 ===== */
     .booking-modal-content,
     .contact-form-content,
-    #wechatModal .modal-content {
-        position: relative !important;
-        width: 92% !important;
+    .property-modal-content,
+    .modal-content {
+        width: 90% !important;
         max-width: 340px !important;
         max-height: 80vh !important;
         margin: auto !important;
-        padding: 0 !important;
+        padding: 20px !important;
         border-radius: 16px !important;
         background: #fff !important;
         overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        box-shadow: 0 15px 50px rgba(0,0,0,0.4) !important;
-    }
-    
-    /* ===== 弹窗内部结构 ===== */
-    .property-modal-header,
-    .modal-header {
-        position: sticky !important;
-        top: 0 !important;
-        background: #fff !important;
-        padding: 16px 50px 16px 20px !important;
-        border-bottom: 1px solid #eee !important;
-        z-index: 10 !important;
-    }
-    
-    .property-modal-header h3,
-    .modal-header h3 {
-        font-size: 1.1rem !important;
-        margin: 0 !important;
-    }
-    
-    .property-modal-body,
-    .modal-body {
-        padding: 16px 20px 30px 20px !important;
-        max-height: calc(80vh - 60px) !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
     }
     
     /* ===== 关闭按钮 ===== */
-    .property-modal-close,
-    .modal-close,
     .booking-modal-close,
-    .contact-form-close {
+    .contact-form-close,
+    .property-modal-close,
+    .modal-close {
         position: absolute !important;
-        top: 12px !important;
+        top: 10px !important;
         right: 12px !important;
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 22px !important;
-        line-height: 30px !important;
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 20px !important;
+        line-height: 26px !important;
         text-align: center !important;
-        color: #666 !important;
-        background: #f0f0f0 !important;
+        color: #888 !important;
+        background: #eee !important;
         border-radius: 50% !important;
         cursor: pointer !important;
-        z-index: 20 !important;
+        z-index: 10 !important;
         border: none !important;
     }
     
-    /* ===== 背景滚动锁定 ===== */
-    body.modal-open,
-    body.property-modal-open {
-        overflow: hidden !important;
+    /* ===== 卡片详情弹窗居中 ===== */
+    #propertyModal {
         position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
         width: 100% !important;
         height: 100% !important;
+        z-index: 99999 !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+        display: none !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    #propertyModal.active {
+        display: flex !important;
+    }
+    
+    #propertyModal .modal-content {
+        width: 90% !important;
+        max-width: 340px !important;
+        max-height: 80vh !important;
+        margin: auto !important;
+        padding: 20px !important;
+        border-radius: 16px !important;
+        background: #fff !important;
+        overflow-y: auto !important;
     }
 }
