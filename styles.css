@@ -5878,111 +5878,47 @@ input, textarea, select {
 
 
 /* ============================================
-   最终修复：弹窗居中 + 搜索框可点击
+/* ============================================
+   修复：微信二维码、联系表单弹窗
    ============================================ */
 
-/* 强制所有弹窗居中（移动端） */
+/* 移动端弹窗修复 */
 @media (max-width: 768px) {
-    /* 1. 所有弹窗必须居中 */
-    .modal,
-    .modal-overlay,
-    .popup,
-    .tip-popup,
-    [class*="modal"],
-    [class*="popup"],
-    [style*="position: fixed"][style*="z-index"] {
+    /* 微信二维码弹窗 */
+    #wechatQRModal,
+    #wechatModal,
+    #contactFormModal {
         display: none !important;
-        position: fixed !important;
-        z-index: 999999 !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        width: 90% !important;
-        max-width: 320px !important;
-        max-height: 60vh !important;
-        margin: 0 !important;
-        padding: 15px !important;
-        background: #fff !important;
-        border-radius: 12px !important;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.3) !important;
-        overflow: auto !important;
     }
     
-    /* 显示弹窗时 */
-    .modal.active,
-    .modal[style*="display: block"],
-    .modal[style*="display:flex"] {
-        display: flex !important;
+    #wechatQRModal[style*="display: flex"],
+    #wechatModal[style*="display: flex"],
+    #contactFormModal.active {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-    }
-    
-    /* 2. 搜索框彻底修复 */
-    .search-section {
-        position: relative !important;
+        position: fixed !important;
         z-index: 99999 !important;
-        padding: 12px 10px !important;
-        margin: 10px !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0,0,0,0.6) !important;
+        padding: 20px !important;
+    }
+    
+    /* 弹窗内容 */
+    .wechat-qr-modal,
+    .contact-form-content {
+        width: 85% !important;
+        max-width: 320px !important;
+        margin: auto !important;
+        border-radius: 16px !important;
+        padding: 20px !important;
         background: #fff !important;
-        border-radius: 10px !important;
-    }
-    
-    .search-box {
-        position: relative !important;
-        z-index: 999999 !important;
-        display: block !important;
-        padding: 0 !important;
-    }
-    
-    .search-filters {
-        display: block !important;
-        width: 100% !important;
-    }
-    
-    /* 下拉框 - 最终修复 */
-    .search-select {
-        display: block !important;
-        width: 100% !important;
-        height: 50px !important;
-        margin-bottom: 8px !important;
-        padding: 8px 12px !important;
-        font-size: 14px !important;
-        border: 1px solid #ddd !important;
-        border-radius: 8px !important;
-        background: #fff !important;
-        cursor: pointer !important;
-        pointer-events: auto !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-    
-    .search-select option {
-        padding: 10px !important;
-        font-size: 14px !important;
-    }
-    
-    .search-btn {
-        display: block !important;
-        width: 100% !important;
-        height: 50px !important;
-        font-size: 16px !important;
-        background: #e67e22 !important;
-        color: #fff !important;
-        border-radius: 8px !important;
-        cursor: pointer !important;
-    }
-    
-    /* 3. 价格筛选弹窗 */
-    .price-filter-modal,
-    .filter-modal,
-    [id*="price"],
-    [id*="filter"] {
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
     }
 }
+
 
 /* ============================================
    终极修复方案：简单可靠
