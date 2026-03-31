@@ -10,7 +10,7 @@ function initSearch() {
         <div class="search-container">
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="搜索民宿、景点、房源..." autocomplete="off">
-                <button id="searchBtn" class="search-btn">🔍</button>
+                <button id="searchBtn" class="search-btn">搜索</button>
             </div>
             <div id="searchResults" class="search-results"></div>
         </div>

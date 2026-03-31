@@ -6422,3 +6422,27 @@ input, textarea, select {
         background: transparent !important;
     }
 }
+
+/* ===== 移动端搜索按钮缩小 ===== */
+@media (max-width: 768px) {
+    .search-btn {
+        font-size: 14px !important;
+        padding: 8px 16px !important;
+        min-width: 50px !important;
+        white-space: nowrap !important;
+        background: #e67e22 !important;
+        color: #fff !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+    }
+    
+    .search-box {
+        gap: 8px !important;
+        padding: 8px 12px !important;
+    }
+    
+    .search-box input {
+        padding: 10px 12px !important;
+        font-size: 15px !important;
+    }
+}
