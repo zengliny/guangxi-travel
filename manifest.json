@@ -1,11 +1,12 @@
 {
-    "name": "广西旅游达人",
+    "name": "广西旅游达人 - 涠洲岛民宿、德天瀑布、阳朔旅游",
     "short_name": "广西旅游",
-    "description": "广西本地旅游服务：景点、民宿、租房、养老、房产",
+    "description": "广西本地专业旅游服务：景点攻略、民宿推荐、租房信息、候鸟养老、旅游房产、房屋托管",
     "start_url": "/",
     "display": "standalone",
+    "display_override": ["minimal-ui", "browser"],
     "background_color": "#fef9e7",
-    "theme_color": "#e67e22",
+    "theme_color": "#0ea5e9",
     "orientation": "portrait-primary",
     "icons": [
         {
@@ -21,8 +22,54 @@
             "purpose": "any maskable"
         }
     ],
-    "categories": ["travel", "lifestyle"],
+    "categories": ["travel", "lifestyle", "productivity"],
     "lang": "zh-CN",
-    "scope": "/guangxi-travel/",
-    "prefer_related_applications": false
+    "dir": "ltr",
+    "scope": "/",
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "shortcuts": [
+        {
+            "name": "查看景点攻略",
+            "short_name": "景点",
+            "description": "查看广西热门景点攻略",
+            "url": "/#destinations",
+            "icons": [{"src": "/images/icon-192.png", "sizes": "192x192"}]
+        },
+        {
+            "name": "民宿推荐",
+            "short_name": "民宿",
+            "description": "浏览涠洲岛、阳朔民宿",
+            "url": "/#homestay",
+            "icons": [{"src": "/images/icon-192.png", "sizes": "192x192"}]
+        },
+        {
+            "name": "在线咨询",
+            "short_name": "咨询",
+            "description": "联系旅游顾问",
+            "url": "/#contact",
+            "icons": [{"src": "/images/icon-192.png", "sizes": "192x192"}]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/images/screenshot-1.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpeg",
+            "form_factor": "wide"
+        },
+        {
+            "src": "/images/screenshot-2.jpg",
+            "sizes": "720x1280",
+            "type": "image/jpeg",
+            "form_factor": "narrow"
+        }
+    ],
+    "handle_links": "auto",
+    "protocol_handlers": [
+        {
+            "protocol": "mailto",
+            "url": "/?email=%s"
+        }
+    ]
 }

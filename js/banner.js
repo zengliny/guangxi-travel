@@ -169,9 +169,38 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// 页面加载完成后初始化
+// ==================== 图片懒加载 ====================
+function initLazyLoading() {
+    if (!('IntersectionObserver' in window)) {
+        return;
+    }
+
+    const lazyImages = document.querySelectorAll('[data-src]');
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '50px 0px',
+        threshold: 0.01
+    });
+
+    lazyImages.forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// ==================== 页面加载完成后初始化 ====================
 document.addEventListener('DOMContentLoaded', function() {
     renderFeaturedProperties();
+    initLazyLoading();
 });
 
 // 搜索功能
