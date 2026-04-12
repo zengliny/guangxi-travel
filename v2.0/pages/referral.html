@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邀请返利 - 广西旅游 v2.0</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .referral-page {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%);
+            padding: 40px 20px;
+        }
+
+        .referral-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .referral-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .referral-header h1 {
+            font-size: 36px;
+            color: #0c1929;
+            margin: 0 0 10px;
+        }
+
+        .referral-header p {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        .invite-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .invite-code {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .invite-code::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .share-btn-wechat { background: #2dc65f; color: white; }
+        .share-btn-qq { background: #12b7f5; color: white; }
+        .share-btn-weibo { background: #e6162d; color: white; }
+        .share-btn-douyin { background: #000; color: white; }
+
+        .share-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .rules-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .rule-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .rule-card h3 {
+            font-size: 20px;
+            color: #0c1929;
+            margin: 0 0 20px;
+            text-align: center;
+        }
+
+        .rule-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .rule-list li {
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rule-list li::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .records-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .records-section h2 {
+            font-size: 24px;
+            color: #0c1929;
+            margin: 0 0 20px;
+        }
+
+        .record-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .record-info {
+            flex: 1;
+        }
+
+        .record-type {
+            font-weight: 600;
+            color: #0c1929;
+        }
+
+        .record-desc {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .record-amount {
+            font-size: 20px;
+            font-weight: 700;
+            color: #22c55e;
+        }
+
+        .record-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-paid { background: #dcfce7; color: #166534; }
+        .status-pending { background: #fef3c7; color: #92400e; }
+
+        .record-date {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .withdraw-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .withdraw-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .withdraw-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .withdraw-form input,
+        .withdraw-form select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .withdraw-form .btn-primary {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .notification {
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification-success { background: #dcfce7; color: #166534; border-left: 4px solid #22c55e; }
+        .notification-error { background: #fee2e2; color: #991b1b; border-left: 4px solid #ef4444; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .rules-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notification-container" id="notification-container"></div>
+
+    <div class="referral-page">
+        <div class="referral-container">
+            <div class="referral-header">
+                <h1>邀请返利计划</h1>
+                <p>邀请好友注册，双方立享奖励，好友成交还有佣金分成！</p>
+            </div>
+
+            <div class="invite-card">
+                <h3>您的专属邀请码</h3>
+                <div class="invite-code" id="invite-code">GXTL2024XXXX</div>
+                <button class="btn btn-primary" id="copy-code-btn" style="padding: 12px 30px; font-size: 16px;">复制邀请码</button>
+                <p style="margin-top: 15px; color: #64748b; font-size: 14px;">邀请好友注册即享双重奖励</p>
+
+                <div class="share-buttons">
+                    <button class="share-btn share-btn-wechat" data-platform="wechat" title="分享到微信">wechat</button>
+                    <button class="share-btn share-btn-qq" data-platform="qq" title="分享到QQ">qq</button>
+                    <button class="share-btn share-btn-weibo" data-platform="weibo" title="分享到微博">weibo</button>
+                    <button class="share-btn share-btn-douyin" data-platform="douyin" title="分享到抖音">douyin</button>
+                </div>
+            </div>
+
+            <div class="rules-section">
+                <div class="rule-card">
+                    <h3>邀请人奖励</h3>
+                    <ul class="rule-list">
+                        <li>好友首次咨询：¥50</li>
+                        <li>好友成交订单：订单金额的5%</li>
+                    </ul>
+                </div>
+                <div class="rule-card">
+                    <h3>被邀请人奖励</h3>
+                    <ul class="rule-list">
+                        <li>首次咨询：¥100优惠券</li>
+                        <li>首单优惠：¥200</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="records-section">
+                <h2>奖励记录</h2>
+                <div id="reward-records"></div>
+
+                <div class="withdraw-section">
+                    <h3>提现申请</h3>
+                    <form class="withdraw-form" id="withdraw-form">
+                        <div class="form-group">
+                            <label>提现金额</label>
+                            <input type="number" name="amount" placeholder="最低提现¥100" min="100">
+                        </div>
+                        <div class="form-group">
+                            <label>提现方式</label>
+                            <select name="method">
+                                <option value="wechat">微信支付</option>
+                                <option value="alipay">支付宝</option>
+                                <option value="bank">银行卡</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>账号</label>
+                            <input type="text" name="account" placeholder="请输入账号">
+                        </div>
+                        <button type="submit" class="btn btn-primary">申请提现</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initReferralPage } from './src/referral-page.js';
+
+        initReferralPage();
+    </script>
+</body>
+</html>

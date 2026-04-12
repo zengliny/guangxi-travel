@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 广西旅游 v2.0</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .profile-page {
+            min-height: 100vh;
+            background: #f8fafc;
+            padding: 40px 20px;
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .profile-header h1 {
+            font-size: 32px;
+            margin: 0 0 10px;
+        }
+
+        .profile-header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        .profile-sidebar {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .menu-item {
+            padding: 14px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #64748b;
+            text-decoration: none;
+        }
+
+        .menu-item:hover {
+            background: #f1f5f9;
+            color: #0ea5e9;
+        }
+
+        .menu-item.active {
+            background: #e0f2fe;
+            color: #0ea5e9;
+            font-weight: 600;
+        }
+
+        .profile-main {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card h2 {
+            font-size: 20px;
+            margin: 0 0 20px;
+            color: #0c1929;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0ea5e9;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .notification {
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification-success { background: #dcfce7; color: #166534; border-left: 4px solid #22c55e; }
+        .notification-error { background: #fee2e2; color: #991b1b; border-left: 4px solid #ef4444; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notification-container" id="notification-container"></div>
+
+    <div class="profile-page">
+        <div class="profile-container">
+            <div class="profile-header">
+                <h1>个人中心</h1>
+                <p>欢迎回来！管理您的旅游服务账户</p>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-sidebar">
+                    <div class="profile-menu">
+                        <a href="#" class="menu-item active" onclick="switchTab('profile')">
+                            📝 个人资料
+                        </a>
+                        <a href="#" class="menu-item" onclick="switchTab('favorites')">
+                            ⭐ 我的收藏
+                        </a>
+                        <a href="#" class="menu-item" onclick="switchTab('orders')">
+                            📦 我的订单
+                        </a>
+                        <a href="#" class="menu-item" onclick="switchTab('history')">
+                            🕒 浏览历史
+                        </a>
+                        <a href="#" class="menu-item" onclick="switchTab('settings')">
+                            ⚙️ 设置
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile-main">
+                    <!-- 个人资料 -->
+                    <div id="profile-section" class="section-card">
+                        <h2>个人资料</h2>
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label>真实姓名</label>
+                                <input type="text" name="realName" placeholder="请输入真实姓名">
+                            </div>
+                            <div class="form-group">
+                                <label>身份证号</label>
+                                <input type="text" name="idCard" placeholder="请输入身份证号">
+                            </div>
+                            <div class="form-group">
+                                <label>所在城市</label>
+                                <input type="text" name="city" placeholder="请输入所在城市">
+                            </div>
+                            <div class="form-group">
+                                <label>详细地址</label>
+                                <textarea name="address" placeholder="请输入详细地址"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">保存资料</button>
+                        </form>
+                    </div>
+
+                    <!-- 收藏列表 -->
+                    <div id="favorites-section" class="section-card" style="display: none;">
+                        <h2>我的收藏</h2>
+                        <div id="favorites-list"></div>
+                    </div>
+
+                    <!-- 订单列表 -->
+                    <div id="orders-section" class="section-card" style="display: none;">
+                        <h2>我的订单</h2>
+                        <div id="orders-list"></div>
+                    </div>
+
+                    <!-- 浏览历史 -->
+                    <div id="history-section" class="section-card" style="display: none;">
+                        <h2>浏览历史</h2>
+                        <div id="history-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initUserProfile } from './src/user-profile.js';
+
+        function switchTab(tab) {
+            const sections = ['profile', 'favorites', 'orders', 'history', 'settings'];
+            const menuItems = document.querySelectorAll('.menu-item');
+
+            sections.forEach(s => {
+                document.getElementById(`${s}-section`).style.display = s === tab ? 'block' : 'none';
+            });
+
+            menuItems.forEach((item, index) => {
+                item.classList.toggle('active', index === 0 && tab === 'profile');
+            });
+
+            if (tab === 'favorites') initFavorites();
+            if (tab === 'orders') initOrders();
+        }
+
+        initUserProfile();
+    </script>
+</body>
+</html>

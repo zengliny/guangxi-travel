@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线客服 - 广西旅游 v2.0</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .chat-page {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+        .chat-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .chat-header {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h1 {
+            font-size: 24px;
+            margin: 0;
+            color: #0c1929;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .chat-main {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+
+        .chat-sidebar {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 16px;
+            margin: 0 0 15px;
+            color: #0c1929;
+        }
+
+        .ticket-item {
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .ticket-item:hover {
+            background: #e2e8f0;
+        }
+
+        .ticket-item.active {
+            background: #e0f2fe;
+            border: 2px solid #0ea5e9;
+        }
+
+        .ticket-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .ticket-meta {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .ticket-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .status-pending { background: #fef3c7; color: #92400e; }
+        .status-processing { background: #e0f2fe; color: #075985; }
+        .status-resolved { background: #dcfce7; color: #166534; }
+
+        .chat-main-content {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            min-height: 400px;
+            background: #f8fafc;
+        }
+
+        .message {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .message-user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .message-content {
+            max-width: 70%;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 18px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .message-user .message-content {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-text {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .message-time {
+            font-size: 12px;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        .chat-input-area {
+            padding: 20px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input-area textarea {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            resize: none;
+            font-size: 14px;
+            min-height: 50px;
+            transition: all 0.3s;
+        }
+
+        .chat-input-area textarea:focus {
+            outline: none;
+            border-color: #0ea5e9;
+        }
+
+        .send-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .notification {
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification-success { background: #dcfce7; color: #166534; border-left: 4px solid #22c55e; }
+        .notification-error { background: #fee2e2; color: #991b1b; border-left: 4px solid #ef4444; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .chat-main {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notification-container" id="notification-container"></div>
+
+    <div class="chat-page">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>在线客服</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="openTicketModal()">新建工单</button>
+                </div>
+            </div>
+
+            <div class="chat-main">
+                <div class="chat-sidebar">
+                    <div class="sidebar-section">
+                        <h3>我的工单</h3>
+                        <div id="tickets-list"></div>
+                    </div>
+                </div>
+
+                <div class="chat-main-content">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message message-bot">
+                            <img src="/images/bot-avatar.png" class="message-avatar" alt="bot">
+                            <div class="message-content">
+                                <p class="message-text">您好！我是广西旅游助手，可以帮您查询景点、民宿、路线等信息。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="chat-input-area" id="chat-form">
+                        <textarea id="chat-input" placeholder="输入消息..."></textarea>
+                        <button type="submit" class="send-btn">发送</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 工单弹窗 -->
+    <div id="ticket-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; border-radius: 16px; padding: 30px; width: 100%; max-width: 500px;">
+            <h2 style="margin: 0 0 20px;">新建工单</h2>
+            <form id="ticket-form">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">标题</label>
+                    <input type="text" name="title" required placeholder="简要描述您的问题">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">类型</label>
+                    <select name="type" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px;">
+                        <option value="咨询">咨询</option>
+                        <option value="投诉">投诉</option>
+                        <option value="建议">建议</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">内容</label>
+                    <textarea name="content" required placeholder="详细描述您的问题..." style="width: 100%; min-height: 100px; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px;"></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button type="button" class="btn" onclick="closeTicketModal()" style="background: #f1f5f9;">取消</button>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initChatPage } from './src/chat-page.js';
+
+        function openTicketModal() {
+            document.getElementById('ticket-modal').style.display = 'flex';
+        }
+
+        function closeTicketModal() {
+            document.getElementById('ticket-modal').style.display = 'none';
+        }
+
+        initChatPage();
+    </script>
+</body>
+</html>
